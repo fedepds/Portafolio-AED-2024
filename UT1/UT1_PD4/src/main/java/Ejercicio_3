@@ -1,0 +1,28 @@
+1) El siguiente código crea un array y una string. ¿Cuántas referencias a estos objetos existen luego de que el código se ha ejecutado?
+¿Es alguno de los objetos candidato a ser eliminado por el garbage collector?
+       String[] students = new String[10];
+       String studentName = "Peter Parker";
+       students[0] = studentName;
+       studentName = null;
+       No hay referencias a la string "Peter Parker" y hay una referencia al array "students".
+       El objeto "Peter Parker" es candidato a ser eliminado por el garbage collector.
+
+2) Cómo hace un programa para destruir un objeto que ha creado?
+ Un objeto es eliminado por el garbage collector cuando no hay referencias a él.
+ Si se quiere eliminar un objeto antes de que el garbage collector lo haga, se puede hacerlo asignando null a todas las referencias al objeto.
+
+3) Dada la siguiente clase, llamada “ContenedorDeNumeros”, escribe un programa que cree una instancia de la clase, inicialice sus dos variables miembro yluego muestre el
+valor de cada una de ellas.
+       public class NumberHolder {
+           public int anInt;
+           public float aFloat;
+}
+       public class Main {
+           public static void main(String[] args) {
+               NumberHolder nh = new NumberHolder();
+               nh.anInt = 10;
+               nh.aFloat = 20.5f;
+               System.out.println(nh.anInt);
+               System.out.println(nh.aFloat);
+           }
+       }
