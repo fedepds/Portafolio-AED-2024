@@ -9,7 +9,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String[] claves = ManejadorArchivosGenerico.leerArchivo("/Users/federicopizarro/Desktop/UT4_TA2/src/main/java/claves1.txt");
+        String[] claves = ManejadorArchivosGenerico.leerArchivo("/Users/federicopizarro/Documents/GitHub/Portafolio-AED-2024/EQUIPO/UT4_TA2/src/main/java/consultaPrueba.txt");
         int contAgregadosArbol = 0;
         int contAgregadosArray = 0;
         String[] lineasArchivo = new String[claves.length];
@@ -30,7 +30,7 @@ public class Main {
 
         System.err.println(arbol.preOrden());
 
-        claves = ManejadorArchivosGenerico.leerArchivo("/Users/federicopizarro/Desktop/UT4_TA2/src/main/java/consultaPrueba.txt");
+        claves = ManejadorArchivosGenerico.leerArchivo("/Users/federicopizarro/Documents/GitHub/Portafolio-AED-2024/EQUIPO/UT4_TA2/src/main/java/consultaPrueba.txt");
         contAgregadosArbol = 0;
         contAgregadosArray = 0;
         lineasArchivo = new String[claves.length];

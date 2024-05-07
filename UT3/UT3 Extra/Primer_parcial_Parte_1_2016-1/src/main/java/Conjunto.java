@@ -320,6 +320,8 @@ public class Conjunto<T> implements IConjunto {
         * <p>
         * @param conjuntoUniversal El conjunto universal con respecto al cual se realizará el complemento.
         * @return Una nueva lista que es el complemento de la lista actual con respecto a `conjuntoUniversal`.
+        * El orden de ejecución es O(n + m), donde n es la cantidad de elementos en la lista actual y m es la cantidad de elementos en `conjuntoUniversal`.
+        * Pero comon tomamos a conjuntoUniversal como el conjunto universal, el tiempo de ejecucion es O(n)
      */
     public Conjunto complemento(Conjunto universalConjunto){
         Conjunto resultado = new Conjunto();
