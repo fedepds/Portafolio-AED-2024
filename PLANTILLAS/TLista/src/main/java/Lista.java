@@ -51,7 +51,9 @@ public class Lista implements ILista{
         Nodo nodoActual = this.primero;
         while (nodoActual != null) {
             if (nodoActual.getEtiqueta().compareTo(clave) == 0) {
+                System.out.printf("Nodo con clave %s encontrado\n", clave);
                 return nodoActual;
+
             }
             nodoActual = nodoActual.getSiguiente();
         }
@@ -74,6 +76,7 @@ public class Lista implements ILista{
                     nodoAnterior.setSiguiente(nodoActual.getSiguiente());
                 }
                 this.tamanio--;
+                System.out.printf("Nodo con clave %s eliminado\n", clave);
                 return true;
             }
             nodoAnterior = nodoActual;

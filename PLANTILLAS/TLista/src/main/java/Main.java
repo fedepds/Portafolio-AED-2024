@@ -12,20 +12,10 @@ public class Main {
         lista.listar();
 
         // Buscar un nodo en la lista
-        Nodo nodoBuscado = lista.buscar(2);
-        if (nodoBuscado != null) {
-            System.out.println("Nodo encontrado: " + nodoBuscado.getDato());
-        } else {
-            System.out.println("Nodo no encontrado");
-        }
+        lista.buscar(2);
 
         // Eliminar un nodo de la lista
-        boolean eliminado = lista.eliminar(1);
-        if (eliminado) {
-            System.out.println("Nodo eliminado");
-        } else {
-            System.out.println("Nodo no encontrado para eliminar");
-        }
+        lista.eliminar(2);
 
         // Imprimir la lista después de la eliminación
         lista.listar();
