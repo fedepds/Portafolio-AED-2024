@@ -297,19 +297,21 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return this.obtenerAltura() - this.buscar(unaEtiqueta).obtenerAltura();
     }
     public int obtenerAltura() {
-        if (this.hijoDer == null && this.hijoIzq == null) {
+        int AlturaDer = -1  ;
+        int AlturaIzq = -1;
+        if (hijoDer == null && hijoIzq == null) {
             return 0;
         }
-        int hIzq = -1;
-        int hDer = -1;
 
-        if (this.getHijoIzq() != null) {
-            hIzq = this.getHijoIzq().obtenerAltura();
+        if (hijoDer != null) {
+            AlturaDer = hijoDer.obtenerAltura();
         }
-        if (this.getHijoDer() != null) {
-            hIzq = this.getHijoDer().obtenerAltura();
+
+        if (hijoIzq != null) {
+            AlturaIzq = hijoIzq.obtenerAltura();
         }
-        return max(hDer, hIzq) + 1;
+
+        return 1 + Math.max(AlturaDer, AlturaIzq);
     }
 
 

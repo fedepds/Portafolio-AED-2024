@@ -163,4 +163,11 @@ public class TArbolBB<T> implements IArbolBB<T> {
     public TElementoAB<T> getRaiz() {
         return raiz;
     }
+    public int obtenerAltura(){
+        if(getRaiz() != null){
+            return getRaiz().obtenerAltura();
+        }
+        return 0;
+    }
+
 }
