@@ -1,0 +1,4 @@
+
+LTI: 625.0
+Altura del arbol: 12
+LTIM: 6.377551020408164
