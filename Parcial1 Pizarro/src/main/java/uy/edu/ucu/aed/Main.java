@@ -10,7 +10,7 @@ public class Main
     {
         LinkedList<Producto> lista = new LinkedList<>();
         TArbolDeProductos tienda = new TArbolDeProductos();
-        String[] lineasProductos = ManejadorArchivosGenerico.leerArchivo("/Users/federicopizarro/Desktop/Parcial1/src/main/java/uy/edu/ucu/aed/Parte 3 productos.txt");
+        String[] lineasProductos = ManejadorArchivosGenerico.leerArchivo("src/Parte 3 productos.txt");
 
         Producto producto;
         for (String l : lineasProductos) {
@@ -20,25 +20,21 @@ public class Main
             tienda.insertarElemento(nuevoNodo);
 
         }
+        System.out.println(tienda.longitudTrayectoriaInterna());
+        String salida ="src/Parte 3 salida.txt";
 
-        String salida ="/Users/federicopizarro/Desktop/Parcial1/src/main/java/uy/edu/ucu/aed/salida.txt";
+        String[] datosComoCadenas ={
+                String.valueOf(tienda.longitudTrayectoriaInterna()),
+                String.valueOf(tienda.longitudTrayectoriaInternaMedia()),
+                String.valueOf(tienda.getRaiz().obtenerAltura()),
 
-        int[] datos = new int[10];
-        datos[0]= tienda.longitudTrayectoriaInterna();
-        datos[1]= tienda.longitudTrayectoriaInterna();
-        datos[2]= tienda.getRaiz().obtenerAltura();
-
-
-
-        String[] datosComoCadenas = new String[datos.length];
-        for (int i = 0; i < datos.length; i++) {
-            datosComoCadenas[i] = String.valueOf(datos[i]);
-        }
+        };
 
         ManejadorArchivosGenerico.escribirArchivo(salida, datosComoCadenas);
 
 
         System.out.println(tienda.longitudTrayectoriaInternaMedia());
+
 
 
     }

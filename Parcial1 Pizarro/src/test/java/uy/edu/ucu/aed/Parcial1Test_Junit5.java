@@ -34,20 +34,20 @@ public class Parcial1Test_Junit5
     }
 
     @Test
-    public void longitudTrayectoriaInternaAuxReturnsZeroForNullNode() {
+    public void longitudTrayectoriaInternaAuxConElementoNulo() {
         TArbolDeProductos tree = new TArbolDeProductos();
         assertEquals(0, tree.longitudTrayectoriaInternaAux(null, 0));
     }
 
     @Test
-    public void longitudTrayectoriaInternaAuxReturnsCorrectValueForSingleNode() {
+    public void longitudTrayectoriaInternaAuxConUnElemento() {
         TArbolDeProductos tree = new TArbolDeProductos();
         TElementoAB<Producto> node = new TElementoAB<>("1", new Producto(1, "Product 1"));
         assertEquals(0, tree.longitudTrayectoriaInternaAux(node, 0));
     }
 
     @Test
-    public void longitudTrayectoriaInternaAuxReturnsCorrectValueForNodeWithOneChild() {
+    public void longitudTrayectoriaInternaAuxReturnsConElementoConHijo() {
         TArbolDeProductos tree = new TArbolDeProductos();
         TElementoAB<Producto> node = new TElementoAB<>("1", new Producto(1, "Product 1"));
         node.setHijoIzq(new TElementoAB<>("2", new Producto(2, "Product 2")));
