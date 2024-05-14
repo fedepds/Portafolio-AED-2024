@@ -19,6 +19,7 @@ public class Main {
         System.out.println("LTI: " + lTI);
         System.out.println("La longitud de trayectoria interna media es: " + resultado);
 
+        System.out.println("La longitud de trayectoria interna mediaV2 es: " + arbolProductos.longIntMedv2());
         String[] salida = {
                 "LTI: " + String.valueOf(arbolProductos.raiz.longTraInt(0)[0]),
                 "Altura del arbol: " + String.valueOf(arbolProductos.obtenerAltura()),

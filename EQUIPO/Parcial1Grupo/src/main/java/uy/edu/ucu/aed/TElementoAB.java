@@ -326,6 +326,19 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return res;
     }
 
+    public void longTraIntv2(double[] res, int nivel) {
+        int lti = 0;
+        if (hijoIzq != null) {
+            hijoIzq.longTraIntv2(res, nivel + 1);
+        }
+        if (hijoDer != null) {
+            hijoDer.longTraIntv2(res, nivel + 1);
+        }
+        lti += res[0];
+        res[1] += 1;
+        res[0] = lti + nivel;
+    }
+
     public int obtenerAltura() {
         int der = -1;
         int izq = -1;
