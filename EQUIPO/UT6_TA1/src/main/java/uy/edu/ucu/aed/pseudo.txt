@@ -1,0 +1,66 @@
+Buscar:
+
+Este algoritmo recibe una clave y a partir de esta calcula su indice con la función de hash. Si k está en el indice dado, devuelve la
+posición en la que se encuentra el elemento. En caso contrario, suma uno a i y continua iterando hasta encontrar el elemento o hasta
+que haya un espacio vacío, donde devolverá nulo. También devolverá nulo si recorre toda la tabla y el elemento no está
+
+Precondiciones:
+K debe ser válido
+Postcondiciones:
+k queda inmutado y se devuelve la posición del elemento con clave k, si este está en la tabla.
+Tiempo de Ejecución: O(1)
+
+TTablaHASH.buscar(clave k) devuelve número entero:
+INICIO
+	i <- 0
+	Repetir
+		j <- h(k,i)
+		Si T[j] = k entonces
+			devolver j
+		Sino
+			i <- i + 1
+		FinSi
+	Hasta que vacio(T[j]) o i = m
+	Devolver nulo
+FIN
+
+
+Insertar:
+
+Este algoritmo recibe una clave y a partir de esta calcula su indice con la función de hash. Si el espacio que ocupa este indice es vacío, se
+inserta k. Si no es vacío, se itera secuencialmente sobre la tabla buscando un lugar vacío donde insertar k. Si no existe un lugar vacío,
+no lo inserta y devuelve nulo.
+
+Precondiciones:
+K debe ser válido
+Postcondiciones:
+K queda inmutado y se devuelve la posición en la que se insertó.
+
+TTablaHASH.insertar(clave k) devuelve número entero:
+INICIO
+	i <- 0
+	Repetir
+		j <- h(k,i)
+		Si vacio(T[j]) entonces
+			T[j] = k
+			devolver j
+		Sino
+			i <- i + 1
+		FinSi
+	Hasta que i = m
+	Devolver nulo
+FIN
+
+
+
+
+
+Lenguaje Natural:
+
+Devolvemos el resultado del modulo de unaClave  y el tamaño de la tabla.
+Precondiciones: Que la tabla este inicializada con un tamaño.
+Postcondiciones:
+FuncionHashing(unaClave : entero):
+Com
+    devolver unaClave % tamañoTabla
+Fin
