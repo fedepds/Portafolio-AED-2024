@@ -1,0 +1,53 @@
+insertarEnTrie(palabra, pagina)
+    COM
+        trie <- nuevo trie
+        nodo <- trie
+        para cada caracter en palabra hacer
+            si caracter no esta en nodo.hijos entonces
+                nodo.hijos[caracter] <- nuevo nodo
+            fin si
+            nodo <- nodo.hijos[caracter]
+        fin para cada
+        nodo.paginas.insertar(pagina)
+    FIN
+
+LN: este algoritmo recibe una palabra y una pagina, luego recorre el caracter en cada palabra y para cada caracter lo insertar
+en el trie si no existe como hijo del nodo del caracter anterior. Luego agrega las paginas en las que se encuentra la palabra.
+
+Pre-Condiciones: que las palabras y las paginas sean validas
+Post-Condiciones: las palabras y las paginas quedan inmutadas y se construye un trie donde cada nodo representa un caracter
+y al final de cada palabra se agrega las paginas en las que aparece.
+
+Orden de tiempo de ejecucion: O(N*M) siendo N el largo total de todas las palabras y M el tamaño del diccionario.
+
+Preguntas:
+1- Comparaciones si el argumento es "Programa": 
+Para P son 3
+Para R son 2
+Para O son 1
+Para G son 1
+Para R son 1
+Para A son 1
+Para M son 1
+Para A son 1
+Y para verificar si es palabra, 1
+En total: 12 comparaciones.
+
+2- Si el argumento es "Proselitismo":
+Para P son 3
+Para R son 2
+Para O son 1
+Luego no se encuentra la S, por lo que hace 1 comparacion mas.
+En total: 7 comparaciones.
+
+3- Si el argumentoo es "Cazadores":
+Para C son 2
+Para A son 1
+Para Z son 2
+Para A son 1
+La D no se encuentra, por lo que hace 1 comparacion mas.
+En total: 7 comparaciones.
+
+4- Altura del arbol: Largo de la palabra mas larga + la raiz = 13
+
+5- Tamaño del arbol: 46

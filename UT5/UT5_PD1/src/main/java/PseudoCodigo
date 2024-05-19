@@ -1,0 +1,29 @@
+Desarrollar en seudocódigo un algoritmo que permita agregar una unidad académica al organigrama,
+recibiendo como parámetros el nombre de la Unidad –
+“unaEtiqueta” y la etiqueta de la Unidad de la
+cual ha de depender -
+“etiquetaPadre” (si ésta es vacía “”, se indica que la nueva Unidad será la raíz del
+árbol).
+Insertar(unaEtiqueta, etiquetaPadre) : devuelve “true” si la inserción se hace correctamente, o
+“false” si no se puede realizar.
+
+Percondiciones: No tiene
+PostCondiciones: Se agrega una unidad académica al organigrama
+
+TNodoArbolGEnerico Insertar(TNodoArbolGenerico nodo, String unaEtiqueta, String etiquetaPadre)
+Com
+Crear un nuevo nodo con la etiqueta UnaEtiqueta
+Crear un nuevo nodo con la etiqueta EtiquetaPadre
+Si el nodo dado es nulo
+    Devolver el nuevo nodo
+Si la etiqueta del nodo dado es igual a la etiqueta del padre
+    Agregar el nuevo nodo a los hijos del nodo dado
+    Devolver el nodo dado
+Para cada hijo en los hijos del nodo dado
+    Llamar a la función Insertar con el hijo, la etiqueta dada y la etiqueta del padre
+    Si el resultado no es nulo
+        Devolver el resultado
+Devolver nulo
+
+
+ */
