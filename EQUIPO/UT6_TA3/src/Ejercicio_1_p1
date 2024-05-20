@@ -1,0 +1,6 @@
+Comparar timepos de ejecucion:
+1- Medicion: MedicionBuscarHashMap - Consumo de memoria=1328896 Bytes , tiempo de ejecución =2503791 nanosecs
+2- Medicion: MedicionBuscarTrie - Consumo de memoria=10450571 Bytes , tiempo de ejecución =7012583 nanosecs
+3- Medicion: MedicionBuscarTreeMap - Consumo de memoria=1328898 Bytes , tiempo de ejecución =14998916 nanosecs
+4- Medicion: MedicionBuscarArrayList - Consumo de memoria=937274 Bytes , tiempo de ejecución =4648371083 nanosecs
+5-Medicion: MedicionBuscarLinkedList - Consumo de memoria=937264 Bytes , tiempo de ejecución =9372455834 nanosecs
