@@ -1,5 +1,5 @@
 import java.util.HashMap;
-public class MedicionBuscarHashMap extends  Medible{
+public class MedicionBuscarHashMap extends Medible {
 
     private HashMap hashMap;
     public MedicionBuscarHashMap(HashMap hashMap) {

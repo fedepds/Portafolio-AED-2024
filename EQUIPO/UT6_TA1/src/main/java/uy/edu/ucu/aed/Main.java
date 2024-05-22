@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ut3_ta1;
+package uy.edu.ucu.aed;
 
 /**
  *

@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
 
     private static final int REPETICIONES = 100;
+    private static final int MEDICIONES = 20;
 
     public static void main(String[] args){
         TArbolTrie trie = new TArbolTrie();      
@@ -27,6 +28,7 @@ public class Main {
         }
         
         Medible[] medibles = new Medible[5];
+        Medible[] medibles2 = new Medible[3];
         int i = 0;
         medibles[i++] = new MedicionBuscarLinkedList(linkedList);
         medibles[i++] = new MedicionBuscarArrayList(arrayList);
@@ -46,5 +48,24 @@ public class Main {
         }
 		
 		 ManejadorArchivosGenerico.escribirArchivo("src/salida.csv",lineas);
+
+        int j = 0;
+        medibles2[j++] = new MedicionPredecirLinkedList(linkedList);
+        medibles2[j++] = new MedicionPredecirTrie(trie);
+        medibles2[j++] = new MedicionPredecirHashMap(hashMap);
+        Medicion ni;
+        j = 0;
+        Object[] params2 = {MEDICIONES, "cas"};
+        String[] lineas2 = new String[4];
+        lineas2[j++] = "algoritmo,tiempo,memoria";
+        for (Medible m: medibles2){
+            ni= m.medir(params2);
+            ni.print();
+            lineas2[j++] = ni.getTexto()+","+ni.getTiempoEjecucion().toString()+","+ni.getMemoria().toString();
+
+        }
+        ManejadorArchivosGenerico.escribirArchivo("src/salida2.csv",lineas2);
+
+
     }
 }

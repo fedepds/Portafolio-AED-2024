@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class MedicionBuscarLinkedList extends Medible{
+public class MedicionBuscarLinkedList extends Medible {
 
     private LinkedList linkedList;
 

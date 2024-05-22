@@ -1,6 +1,6 @@
 import java.util.TreeMap;
 
-public class MedicionBuscarTreeMap extends Medible{
+public class MedicionBuscarTreeMap extends Medible {
     private TreeMap treeMap;
 
     public MedicionBuscarTreeMap(TreeMap treeMap) {
