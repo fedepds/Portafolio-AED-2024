@@ -2,3 +2,15 @@ algoritmo,tiempo,memoria
 MedicionPredecirLinkedList,20262833,937264
 MedicionPredecirTrie,7882500,10450571
 MedicionPredecirHashMap,37015000,5
+algoritmo,tiempo,memoria
+MedicionPredecirLinkedList,20081167,937264
+MedicionPredecirTrie,7646166,10450571
+MedicionPredecirHashMap,33588958,5
+algoritmo,tiempo,memoria
+MedicionPredecirLinkedList,19859333,937264
+MedicionPredecirTrie,7894583,10450571
+MedicionPredecirHashMap,33462958,5
+algoritmo,tiempo,memoria
+MedicionPredecirLinkedList,19758541,937264
+MedicionPredecirTrie,7377583,10450571
+MedicionPredecirHashMap,41233417,1328896

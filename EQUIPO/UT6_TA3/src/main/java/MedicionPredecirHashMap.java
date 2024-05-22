@@ -52,6 +52,6 @@ public class MedicionPredecirHashMap extends Medible{
      */
     @Override
     public Object getObjetoAMedirMemoria() {
-        return null;
+        return this.hashMap;
     }
 }
