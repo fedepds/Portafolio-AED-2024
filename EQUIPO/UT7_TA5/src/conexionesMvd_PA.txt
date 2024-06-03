@@ -1,0 +1,27 @@
+Funcion Camino(Destino:TVertice, Camino:TCamino, TodosCaminos:TCaminos)
+
+Recibe un vertice, el camino previo y una lista de caminos. Se marca como
+visitado al nodo actual. Luego por cada adyacente
+se fija si es el destino y si lo es guarda una copia del camino anterior
+sumandole el adyacente a la lista TodosCaminos. Sino al camino previo se le
+agrega el adyacente y se llama recursivamente al metodo pasandole el destino,
+el camino previo y la lista de caminos y luego se elimina el adyacente del 
+camino previo. Despues de revisar todos los adyacentes se marca el nodo actual
+como no visitado y se devuelve la lista de todos los caminos.
+
+1. Montevideo
+2. Montevideo-BSAS
+3. Montevideo-BSAS-Asuncion
+4. Montevideo-BSAS-Asuncion-Curitiva
+5. Montevideo-BSAS-Asuncion-Curitiva-Rio
+6. Montevideo-BSAS-Asuncion-Curitiva
+7. Montevideo-BSAS-Asuncion (se guarda una copia agregando PA)
+8. Montevideo-BSAS (se guarda una copia agregando PA)
+9. Montevideo (se guarda una copia agregando PA)
+
+¿Para que sirve la clase TCaminos?
+Almacena una copia de los distintos caminos del origen al destino
+
+¿Como se calcula y almacena el costo de un camino?
+Se calcula como la suma de todos los costos de los arcos dentro del camino.
+Se almacena en una variable en TCamino.
