@@ -1,0 +1,112 @@
+Estructuras Internas de un HashMap:
+
+    Un HashMap en Java está compuesto por una matriz de "buckets". Cada 
+    "bucket" es una lista enlazada. Cada entrada en el HashMap es un par 
+    clave-valor que se almacena en un Node o TreeNode.
+
+El proceso de inserción en un HashMap es el siguiente:
+
+    1. Calcular el hashCode de la clave.
+
+    2. Determinar el índice del bucket usando (n - 1) & hash donde n es el tamaño de la matriz.
+
+    3. Insertar el nodo en el bucket correspondiente.
+
+Diagrama del HashMap:
+
+    Insertamos "Hola":
+
+        Indice de "Hola":
+        
+            Suma de valores ASCII:
+
+                'H' = 72
+                'o' = 111
+                'l' = 108
+                'a' = 97
+
+                Suma = 72 + 111 + 108 + 97 = 388
+                
+                Índice: 388 mod 11 = 3
+
+        Se inserta "Hola".
+
+    Insertamos "HolaMundo":
+
+        Indice de "HolaMundo":
+
+            Suma de valores ASCII:
+
+                'H' = 72
+                'o' = 111
+                'l' = 108
+                'a' = 97
+                'M' = 77
+                'u' = 117
+                'n' = 110
+                'd' = 100
+                'o' = 111
+
+                Suma = 72 + 111 + 108 + 97 + 77 + 117 + 110 + 100 + 111 = 903
+
+                Índice: 903 mod 11 = 1
+
+        Se inserta "HolaMundo".
+
+    Insertamos "HashMap":
+
+        Índice de "HashMap":
+
+            Suma de valores ASCII:
+
+                'H' = 72
+                'a' = 97
+                's' = 115
+                'h' = 104
+                'M' = 77
+                'a' = 97
+                'p' = 112
+
+                Suma = 72 + 97 + 115 + 104 + 77 + 97 + 112 = 674
+
+                Índice: 674 mod 11 = 3
+
+        Se inserta "HashMap".
+
+    Insertamos "Colecciones":
+
+        Índice de "Colecciones":
+
+            Suma de valores ASCII:
+
+            'C' = 67
+            'o' = 111
+            'l' = 108
+            'e' = 101
+            'c' = 99
+            'c' = 99
+            'i' = 105
+            'o' = 111
+            'n' = 110
+            'e' = 101
+            's' = 115
+
+            Suma = 67 + 111 + 108 + 101 + 99 + 99 + 105 + 111 + 110 + 101 + 115 = 1127
+
+            Índice: 1127 mod 11 = 5
+
+        Se inserta "Colecciones".
+
+| Index | Bucket              |
+|-------|---------------------|
+| 0     |                     |
+| 1     |["HolaMundo"]        |
+| 2     |                     |
+| 3     |["Hola", "HashMap"]  |
+| 4     |                     |
+| 5     |["Colecciones"]      |
+| 6     |                     | 
+| 7     |                     |
+| 8     |                     |
+| 9     |                     |
+| 10    |                     |

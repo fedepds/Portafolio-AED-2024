@@ -1,0 +1,20 @@
+La implementacion de la clase Alumno esta en el archivo Alumno.java
+
+    UT6_DiccionarioMapasHashing\PDs\pd7\Alumno.java
+
+Características de las Implementaciones:
+
+Consistencia: 
+
+    El método hashCode() debe proporcionar el mismo valor en llamadas 
+repetidas en la misma aplicación si el objeto no se modifica.
+
+Igualdad: 
+
+    Si dos objetos son iguales según el método equals(), deben tener el 
+mismo valor de código hash.
+
+Dispersión: 
+
+    Diferentes objetos deberían tener diferentes códigos hash siempre 
+que sea posible para una buena dispersión.

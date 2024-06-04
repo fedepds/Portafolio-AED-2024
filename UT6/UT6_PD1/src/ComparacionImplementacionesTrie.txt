@@ -1,0 +1,22 @@
+    Espacio de memoria: 
+
+Un Trie que utiliza un array puede consumir más memoria, especialmente si el 
+alfabeto es grande y la mayoría de las entradas del array están vacías. Por 
+otro lado, un HashMap solo utiliza memoria para las entradas que realmente 
+existen, por lo que puede ser más eficiente en términos de uso de memoria.
+
+    Tiempo de búsqueda: 
+
+En un Trie que utiliza un array, la búsqueda de un hijo dado puede ser muy 
+rápida, ya que simplemente implica acceder a una posición de array. Sin 
+embargo, si el alfabeto es grande, esto podría implicar buscar a través de 
+muchas posiciones vacías. En un HashMap, la búsqueda de un hijo dado es una 
+operación de tiempo constante, lo que puede ser más rápido si el número de 
+hijos es pequeño en comparación con el tamaño del alfabeto.
+
+    Tiempo de inserción: 
+
+La inserción en un array es una operación de tiempo constante, mientras que la 
+inserción en un HashMap puede ser más lenta, ya que implica calcular el hash de 
+la clave. Sin embargo, esta diferencia es generalmente pequeña y no es probable 
+que sea el factor limitante en la mayoría de las aplicaciones.

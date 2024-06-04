@@ -1,0 +1,80 @@
+HashCode() en la clase Object:
+
+    hashCode() en la clase Object --> Genera un valor de código hash para el 
+                                      objeto. 
+
+    La implementación predeterminada del método hashCode() en la clase Object 
+    generalmente devuelve una representación en un int de la dirección de 
+    memoria del objeto. 
+
+    Reglas del hashCode():
+
+    1. Si dos objetos son iguales según el método equals(Object), entonces 
+    deben tener el mismo valor de código hash.
+
+    2. Si dos objetos no son iguales según el método equals(Object), no es 
+    necesario que tengan diferentes códigos hash, pero se debe intentar que así 
+    sea para una buena dispersión en las estructuras de datos basadas en hash.
+
+hashCode() en la clase Integer:
+
+    La clase Integer sobrescribe el método hashCode(). 
+
+    hashCode() en la clase Integer --> Devuelve el valor entero del objeto.
+
+    public class Integer {
+        @Override
+        public int hashCode() {
+            return this.intValue();
+        }
+    }
+
+    Esta implementación es directa y eficiente porque los valores enteros ya 
+    son números hash naturales.
+
+hashCode() en la clase String:
+
+    Implementación más compleja del método hashCode(). 
+    
+    Calcula el código hash utilizando una fórmula que involucra los caracteres 
+    de la cadena.
+
+    public class String {
+        private int hash;
+
+        @Override
+        public int hashCode() {
+            int h = hash;
+            if (h == 0 && value.length > 0) {
+                char val[] = value;
+
+                for (int i = 0; i < value.length; i++) {
+                    h = 31 * h + val[i];
+                }
+                hash = h;
+            }
+            return h;
+        }
+    }
+
+    Asegura una buena dispersión de códigos hash para cadenas de caracteres 
+    diferentes.
+    
+    Minimiza las colisiones en las estructuras de datos basadas en hash como 
+    HashMap.
+
+Diferencias en las Implementaciones:
+
+Object: 
+
+    Usa la dirección de memoria, que no es ideal para comparaciones semánticas.
+
+Integer: 
+
+    Devuelve el valor del entero directamente, que es eficiente y apropiado 
+    para números.
+
+String: 
+
+    Calcula el hash basado en una fórmula que utiliza los caracteres de la 
+    cadena, adecuada para garantizar una buena dispersión y evitar colisiones.
