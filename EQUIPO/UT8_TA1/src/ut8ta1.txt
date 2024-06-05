@@ -1,0 +1,73 @@
+Estructura: grafo no dirigido (los costos de los caminos son iguales en ambos sentidos)
+Concepto: Arbol abarcador de costo minimo (se desea encontrar la menor y mas barata cantidad de caminos que permita conectar
+todas las zonas entre si)
+Algoritmo: Prim (es el que nos permite encontrar el arbol abarcador de costo minimo)
+
+Lista de adyacencias
+
+Zona 1 -> 3 / Zona 2 -> 5 / Zona 3 -> 1 / Zona 4 -> 7 / Zona 5 -> 2 / Zona 6
+Zona 2 -> 3 / Zona 1 -> 1 / Zona 3 -> 3 / Zona 4 -> 5 / Zona 5 -> 6 / Zona 6
+Zona 3 -> 5 / Zona 1 -> 1 / Zona 2 -> 2 / Zona 4 -> 3 / Zona 5 -> 5 / Zona 6
+Zona 4 -> 1 / Zona 1 -> 3 / Zona 2 -> 2 / Zona 3 -> 7 / Zona 5 -> 1 / Zona 6
+Zona 5 -> 7 / Zona 1 -> 5 / Zona 2 -> 3 / Zona 3 -> 7 / Zona 4 -> 4 / Zona 6
+Zona 6 -> 2 / Zona 1 -> 6 / Zona 2 -> 5 / Zona 3 -> 1 / Zona 4 -> 4 / Zona 5
+
+U/ 	V-U/ 	T
+1/ 	2,3,4,5,6	(1,4)	1
+1,4/	2,3,5,6		(4,6)	1
+1,4,6/	2,3,5		(4,3)	2
+1,3,4,6/2,5		(3,2)	1
+1,2,3,4,6/ 5		(3,5)	3
+
+prim
+
+LN: Primero verificamos si el grafo es conexo. Si no es devolvemos null. Si es conexo, primero creamos una copia de la lista de vertices
+(V), creamos una lista vacia de aristas (T) y una de vertices (U). Quitamos el primer elemento de V y lo agregamos a U. Buscamos la arista
+de menor costo que una uno de los elementos de U con uno de los de V. Una vez que la encontramos, la guardamos en T y agregamos el vertice
+al que apunta la arista a U y lo quitamos de V. Hasta que no queden vertices en V. Devolvemos un nuevo grafo con todos los vertices y
+las aristas de T.
+
+COM
+	si no esConexo entonces
+		devolver null
+	fin si
+	verticesAux -> nueva linkedList(getVertices())
+	aristasAAM -> nueva linkedList()
+	verticesAAM -> nueva linkedList()
+	verticesAAM.agregar(verticesAux.quitarPrimero())
+	mientras no verticesAux.esVacio() hacer
+		aristasAux -> lasAristas.buscarMin(verticesAAM, verticesAux)
+		aristasAAM.agregar(aristasAux)
+		verticesAAM.agregar(aristasAux.getEtiquetaDestino())
+		verticesAux.quitar(aristasAux.getEtiquetaDestino())
+	fin mientras
+	devolver nuevo TGrafoNoDirigido (nueva linkedList(getVertices().Values()), aristasAAM)
+FIN
+
+buscarMin
+LN: Creamos una arista temporal, creamos otra arista de valor nulo e inicializamos una variable llamada costo minimo de valor
+infinito. Para cada elemento de U recorremos cada elemento de V. Nos fijamos si existe una arista entre el elemento de U y el
+elemento de V. Si esta existe nos fijamos si su costo es menor al costoMinimo y si lo es sobreescribimos el costoMinimo
+con el valor del costo de la arista y sobreescribimos la aristaMin a la aristaActual.
+
+TArista buscarMin(Collection<Comparable> verticesU, Collection<Comparable> verticesV)
+COM
+	tempArista -> null
+	aristaMin -> null
+	costoMin -> infinito
+	para cada u en verticesU
+		para cada v en verticesV
+			tempArista -> buscar(u,v)
+			si tempArista <> null
+				si tempArista.getCosto()<costoMin
+					costoMin=tempArista.getCosto()
+					aristaMin=tempArista
+				fin si
+			fin si
+		fin para cada
+	fin para cada
+	devolver aristaMin
+FIN
+
+
+
