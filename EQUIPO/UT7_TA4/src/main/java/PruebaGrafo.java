@@ -4,7 +4,7 @@ import java.util.Collection;
 public class PruebaGrafo {
 
     public static void main(String[] args) {
-        TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("./src/aeropuertos_1.txt","./src/conexiones_1.txt",
+        TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/main/java/aeropuertos.txt",".src/main/java/conexiones.txt",
                 false, TGrafoDirigido.class);
 
         Object[] etiquetasarray = gd.getEtiquetasOrdenado();
