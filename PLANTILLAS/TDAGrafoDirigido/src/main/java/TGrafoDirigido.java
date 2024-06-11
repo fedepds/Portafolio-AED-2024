@@ -421,6 +421,11 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return null;
     }
+
+    public Collection<TVertice> bea() {
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+        // Tools | Templates.
+    }
     
     
 }

@@ -152,5 +152,38 @@ public class TVertice<T> implements IVertice {
         // Devolver la colección de todos los caminos
         return todosLosCaminos;
     }
+    /**
+     * Este método implementa el algoritmo de búsqueda en anchura (BFS) en un grafo.
+     * BFS es un algoritmo de recorrido donde debes comenzar a recorrer desde un nodo seleccionado (nodo fuente o inicial)
+     * y recorrer el grafo por capas, explorando así los nodos vecinos (nodos que están directamente conectados al nodo fuente).
+     * Luego debes moverte hacia los nodos vecinos del siguiente nivel.
+     *
+     * @param visitados Esta es una colección de vértices que han sido visitados por el algoritmo BFS.
+     */
+    @Override
+    public void bea(Collection<TVertice> visitados) {
+        // Marca el nodo actual como visitado y lo encola
+        this.setVisitado(true);
+        LinkedList<TVertice> queue = new LinkedList<>();
+        queue.addLast(this);
+        visitados.add(this);
+
+        while (!queue.isEmpty()) {
+            // Desencola un vértice de la cola y lo imprime
+            TVertice x = queue.removeFirst();
+            LinkedList<TAdyacencia> xAdyacentes = x.getAdyacentes();
+
+            // Obtiene todos los vértices adyacentes del vértice desencolado x
+            // Si un adyacente no ha sido visitado, entonces lo marca como visitado y lo encola
+            for (TAdyacencia v : xAdyacentes) {
+                if (!v.getDestino().getVisitado()) {
+                    v.getDestino().setVisitado(true);
+                    queue.addLast(v.getDestino());
+                    visitados.add(v.getDestino());
+                }
+            }
+        }
+    }
+
 
 }
