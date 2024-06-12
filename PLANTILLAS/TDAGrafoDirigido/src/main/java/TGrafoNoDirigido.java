@@ -104,16 +104,35 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
         // Devuelve la colección de vértices visitados
         return visitados;
     }
+    /**
+     * Este método calcula el número de Bacon para un actor dado.
+     * El número de Bacon de un actor es el número de grados de separación que tienen del actor Kevin Bacon, según lo define el juego "Six Degrees of Kevin Bacon".
+     * El método primero recupera el vértice correspondiente al actor dado del grafo.
+     * Si el actor no existe en el grafo, devuelve -1.
+     * Luego, recupera el vértice correspondiente a Kevin Bacon y calcula el número de Bacon para todos los actores en el grafo.
+     * Finalmente, devuelve el número de Bacon del actor dado.
+     *
+     * @param actor El nombre del actor para el cual calcular el número de Bacon.
+     * @return El número de Bacon del actor, o -1 si el actor no existe en el grafo.
+     */
     @Override
     public int numBacon(Comparable actor) {
-        TVertice actorBuscado=getVertices().get(actor);
+        // Obtiene el vértice correspondiente al actor dado
+        TVertice actorBuscado = getVertices().get(actor);
+
+        // Si el actor no existe en el grafo, devuelve -1
         if (actorBuscado == null){
             return -1;
         }
-        TVertice kevin=getVertices().get("Kevin_Bacon");
-        kevin.numBacon();
-        return actorBuscado.getBacon();
 
+        // Obtiene el vértice correspondiente a Kevin Bacon
+        TVertice kevin = getVertices().get("Kevin_Bacon");
+
+        // Calcula el número de Bacon para todos los actores en el grafo
+        kevin.numBacon();
+
+        // Devuelve el número de Bacon del actor dado
+        return actorBuscado.getBacon();
     }
 
 }

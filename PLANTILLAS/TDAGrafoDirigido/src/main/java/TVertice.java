@@ -196,33 +196,30 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
     }
 
     public void numBacon() {
-        // Marca el nodo actual como visitado y lo encola
+        // Marca el vértice actual como visitado y lo añade a la cola
         setVisitado(true);
-        LinkedList<TVertice> queue = new LinkedList<>();
-        queue.addLast(this);
+        LinkedList<TVertice> cola = new LinkedList<>();
+        cola.addLast(this);
         this.setBacon(0);
 
-        while (!queue.isEmpty()) {
-            // Desencola un vértice de la cola y lo imprime
-            TVertice x = queue.removeFirst();
-            LinkedList<TAdyacencia> xAdyacentes = x.getAdyacentes();
+        while (!cola.isEmpty()) {
+            // Desencola un vértice de la cola
+            TVertice x = cola.removeFirst();
+            LinkedList<TAdyacencia> adyacentesX = x.getAdyacentes();
 
-            int baconActual=x.getBacon();
+            int baconActual = x.getBacon();
 
             // Obtiene todos los vértices adyacentes del vértice desencolado x
-            // Si un adyacente no ha sido visitado, entonces lo marca como visitado y lo encola
-            for (TAdyacencia v : xAdyacentes) {
-                TVertice destino=v.getDestino();
+            // Si un adyacente no ha sido visitado, entonces lo marca como visitado y lo añade a la cola
+            for (TAdyacencia v : adyacentesX) {
+                TVertice destino = v.getDestino();
                 if (!destino.getVisitado()) {
                     destino.setVisitado(true);
-                    queue.addLast(v.getDestino());
-                    destino.setBacon(baconActual+1);
-
-
+                    cola.addLast(v.getDestino());
+                    destino.setBacon(baconActual + 1);
                 }
             }
         }
-
     }
 
 
