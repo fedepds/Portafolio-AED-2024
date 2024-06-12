@@ -2,12 +2,13 @@
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class TVertice<T> implements IVertice {
+public class TVertice<T> implements IVertice, IVerticeKevinBacon {
 
     private Comparable etiqueta;
     private LinkedList<TAdyacencia> adyacentes;
     private boolean visitado;
     private T datos;
+    private int numBacon=0;
 
     public Comparable getEtiqueta() {
         return etiqueta;
@@ -183,6 +184,45 @@ public class TVertice<T> implements IVertice {
                 }
             }
         }
+    }
+    @Override
+    public int getBacon() {
+        return this.numBacon;
+    }
+
+    @Override
+    public void setBacon(int newBacon) {
+        this.numBacon = newBacon;
+    }
+
+    public void numBacon() {
+        // Marca el nodo actual como visitado y lo encola
+        setVisitado(true);
+        LinkedList<TVertice> queue = new LinkedList<>();
+        queue.addLast(this);
+        this.setBacon(0);
+
+        while (!queue.isEmpty()) {
+            // Desencola un vértice de la cola y lo imprime
+            TVertice x = queue.removeFirst();
+            LinkedList<TAdyacencia> xAdyacentes = x.getAdyacentes();
+
+            int baconActual=x.getBacon();
+
+            // Obtiene todos los vértices adyacentes del vértice desencolado x
+            // Si un adyacente no ha sido visitado, entonces lo marca como visitado y lo encola
+            for (TAdyacencia v : xAdyacentes) {
+                TVertice destino=v.getDestino();
+                if (!destino.getVisitado()) {
+                    destino.setVisitado(true);
+                    queue.addLast(v.getDestino());
+                    destino.setBacon(baconActual+1);
+
+
+                }
+            }
+        }
+
     }
 
 

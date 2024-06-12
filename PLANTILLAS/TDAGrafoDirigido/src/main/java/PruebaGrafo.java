@@ -39,6 +39,25 @@ public class PruebaGrafo {
             System.out.println(v.getEtiqueta());
 
         }
+
+        // cargar grafo con actores y relaciones
+        TGrafoNoDirigido grafo2 = UtilGrafos.cargarGrafo("src/actores.csv", "src/en_pelicula.csv", false,
+                TGrafoNoDirigido.class);
+
+        // invocar a numBacon como indica la letra y mostrar en consola el resultado
+        System.out.println(grafo2.numBacon("John_Goodman"));
+        System.out.println(grafo2.numBacon("Tom_Cruise"));
+        System.out.println(grafo2.numBacon("Jason_Statham"));
+        System.out.println(grafo2.numBacon("Lukas_Haas"));
+        System.out.println(grafo2.numBacon("Djimon_Hounsou"));
+
+        String[] bacon = { String.valueOf(grafo2.numBacon("John_Goodman")),
+                String.valueOf(grafo2.numBacon("Tom_Cruise")),
+                String.valueOf(grafo2.numBacon("Jason_Statham")),
+                String.valueOf(grafo2.numBacon("Lukas_Haas")),
+                String.valueOf(grafo2.numBacon("Djimon_Hounsou")) };
+
+        ManejadorArchivosGenerico.escribirArchivo("SALIDA", bacon);
     }
 }
 

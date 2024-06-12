@@ -1,7 +1,7 @@
 import java.util.Collection;
 import java.util.LinkedList;
 
-public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido {
+public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido, IGrafoKevinBacon {
     protected TAristas lasAristas = new TAristas();
 
     /**
@@ -103,6 +103,17 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
 
         // Devuelve la colección de vértices visitados
         return visitados;
+    }
+    @Override
+    public int numBacon(Comparable actor) {
+        TVertice actorBuscado=getVertices().get(actor);
+        if (actorBuscado == null){
+            return -1;
+        }
+        TVertice kevin=getVertices().get("Kevin_Bacon");
+        kevin.numBacon();
+        return actorBuscado.getBacon();
+
     }
 
 }
