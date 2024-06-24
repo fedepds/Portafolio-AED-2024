@@ -194,6 +194,14 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
         this.numBacon = newBacon;
     }
 
+    /**
+     * Este método calcula el número de Bacon para cada vértice en el grafo.
+     * El número de Bacon de un vértice es la longitud del camino más corto desde el vértice actual hasta ese vértice.
+     * Utiliza un enfoque de Búsqueda en Anchura (BFS) para recorrer el grafo.
+     * Marca el vértice actual como visitado, lo añade a la cola y establece su número de Bacon a 0.
+     * Luego, mientras la cola no esté vacía, desencola un vértice, obtiene todos sus vértices adyacentes y, para cada vértice adyacente que no ha sido visitado,
+     * lo marca como visitado, lo añade a la cola y establece su número de Bacon al número de Bacon del vértice actual más uno.
+     */
     public void numBacon() {
         // Marca el vértice actual como visitado y lo añade a la cola
         setVisitado(true);
@@ -220,6 +228,17 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
             }
         }
     }
+    /**
+     * Este método realiza una Búsqueda en Profundidad (DFS) en el grafo para generar una ordenación topológica de los vértices.
+     * Una ordenación topológica es una ordenación lineal de sus vértices tal que para cada arista dirigida (u, v) del vértice u al vértice v, u viene antes que v en la ordenación.
+     * El método utiliza un enfoque recursivo para recorrer el grafo.
+     * Añade el vértice actual al conjunto de vértices visitados y luego itera sobre todos los vértices adyacentes.
+     * Si un vértice adyacente no ha sido visitado, llama recursivamente al método sobre él.
+     * Después de visitar todos los vértices adyacentes, el vértice actual se empuja a la pila, que finalmente contendrá la ordenación topológica de los vértices.
+     *
+     * @param visitados Un conjunto de vértices visitados.
+     * @param pila Una pila para contener la ordenación topológica de los vértices.
+     */
     public void ordenacionTopologicaDFS(Set<Comparable> visitados, Stack<TVertice> pila) {
         visitados.add(this.getEtiqueta());
         for (TAdyacencia a : this.getAdyacentes()) {
@@ -230,6 +249,17 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
         }
         pila.push(this);
     }
+    /**
+     * Este método genera todas las posibles ordenaciones topológicas del grafo utilizando Búsqueda en Profundidad (DFS).
+     * Una ordenación topológica es una ordenación lineal de sus vértices tal que para cada arista dirigida (u, v) del vértice u al vértice v, u viene antes que v en la ordenación.
+     * Se crea un conjunto para llevar un seguimiento de los vértices visitados y una lista para almacenar la ordenación actual.
+     * Itera sobre todos los vértices del grafo, y si un vértice no ha sido visitado, llama al método DFS sobre él.
+     * Los vértices se añaden a la lista en postorden, lo que significa que un vértice se añade a la lista solo después de que todos sus vecinos hayan sido visitados.
+     *
+     * @param visitados Un conjunto de vértices visitados.
+     * @param ordenacionActual Una lista que representa la ordenación actual.
+     * @param todasLasOrdenaciones Una lista de listas de vértices, donde cada lista representa una posible ordenación topológica del grafo.
+     */
     public void todasLasOrdenacionesTopologicasDFS(Set<Comparable> visitados, List<TVertice> ordenacionActual, List<List<TVertice>> todasLasOrdenaciones) {
         visitados.add(this.getEtiqueta());
         ordenacionActual.add(this);
@@ -245,6 +275,42 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
         }
         ordenacionActual.remove(this);
         visitados.remove(this.getEtiqueta());
+    }
+
+    /**
+     * Este método implementa el algoritmo de Búsqueda en Profundidad (DFS) para detectar ciclos en un grafo.
+     * Utiliza un enfoque recursivo para recorrer el grafo.
+     *
+     * @param visitados Un mapa que realiza un seguimiento de los vértices visitados. La clave es la etiqueta del vértice y el valor es un booleano que indica si el vértice ha sido visitado.
+     * @param enPila Un mapa que realiza un seguimiento de los vértices que están actualmente en la pila de recursión. La clave es la etiqueta del vértice y el valor es un booleano que indica si el vértice está en la pila.
+     * @param vertices Un mapa de todos los vértices en el grafo. La clave es la etiqueta del vértice y el valor es el objeto vértice.
+     * @return true si se detecta un ciclo en el grafo, false en caso contrario.
+     */
+    public boolean dfsCiclo(Map<Comparable, Boolean> visitados, Map<Comparable, Boolean> enPila, Map<Comparable, TVertice> vertices) {
+        // Marca el vértice actual como visitado y lo añade a la pila de recorrido
+        visitados.put(this.getEtiqueta(), true);
+        enPila.put(this.getEtiqueta(), true);
+
+        // Para cada vértice adyacente al vértice actual
+        for (TAdyacencia adyacente : this.getAdyacentes()) {
+            TVertice verticeAdyacente = vertices.get(adyacente.getEtiqueta());
+
+            // Si el vértice adyacente no ha sido visitado, llama recursivamente a la función dfsCiclo
+            if (!visitados.getOrDefault(adyacente.getEtiqueta(), false)) {
+                if (verticeAdyacente.dfsCiclo(visitados, enPila, vertices)) {
+                    return true;
+                }
+            }
+            // Si el vértice adyacente ha sido visitado y está en la pila de recorrido, entonces hay un ciclo en el grafo
+            else if (enPila.getOrDefault(adyacente.getEtiqueta(), false)) {
+                return true;
+            }
+        }
+
+        // Quita el vértice actual de la pila de recorrido
+        enPila.put(this.getEtiqueta(), false);
+
+        return false;
     }
 
 

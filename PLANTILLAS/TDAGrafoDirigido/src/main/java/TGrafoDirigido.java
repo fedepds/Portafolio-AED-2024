@@ -236,6 +236,25 @@ public class TGrafoDirigido implements IGrafoDirigido {
         // Devolver la matriz de caminos con las distancias del camino más corto
         return matrizCaminos;
     }
+    //Floyd con predecesores.
+    public Double[][] floyd(int[][] predecesores) {
+        Double[][] matrixFloyd = UtilGrafos.obtenerMatrizCostos(getVertices());
+        if(predecesores == null){
+            predecesores = new int[matrixFloyd.length][matrixFloyd.length];
+        }
+        int i,j,k;
+        for (k = 0; k < vertices.size(); k++){
+            for (i = 0; i < vertices.size(); i++){
+                for (j = 0; j < vertices.size(); j++){
+                    if(matrixFloyd[i][k] + matrixFloyd[k][j] < matrixFloyd[i][j]){
+                        matrixFloyd[i][j] = matrixFloyd[i][k] + matrixFloyd[k][j];
+                        predecesores[i][j] = k;
+                    }
+                }
+            }
+        }
+        return matrixFloyd;
+    }
 
     @Override
     public Double obtenerExcentricidad(Comparable etiquetaVertice) {
@@ -421,6 +440,16 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return null;
     }
+    /**
+     * Este método realiza una ordenación topológica en el grafo.
+     * La ordenación topológica es un ordenamiento lineal de todos sus vértices de manera que si el grafo tiene un arco dirigido de un vértice A a un vértice B, entonces A aparece antes que B en la ordenación.
+     * Este método utiliza una búsqueda en profundidad (DFS) para realizar la ordenación topológica.
+     * Crea una pila y un conjunto para realizar un seguimiento de los vértices visitados.
+     * Itera sobre todos los vértices en el grafo, y si un vértice no ha sido visitado, llama al método DFS en él.
+     * Los vértices se agregan a la pila en postorden, lo que significa que un vértice se agrega a la pila solo después de que se hayan visitado todos sus vecinos.
+     *
+     * @return Una pila de vértices que representa el orden topológico del grafo.
+     */
     public Stack<TVertice> ordenacionTopologica() {
         Stack<TVertice> pila = new Stack<>();
         Set<Comparable> visitados = new HashSet<>();
@@ -431,6 +460,16 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return pila;
     }
+    /**
+     * Este método genera todas las posibles ordenaciones topológicas del grafo.
+     * Una ordenación topológica es un ordenamiento lineal de sus vértices de manera que para cada arista dirigida (u, v) desde el vértice u al vértice v, u viene antes que v en la ordenación.
+     * Este método utiliza una búsqueda en profundidad (DFS) para generar las ordenaciones topológicas.
+     * Crea una lista para almacenar la ordenación actual y un conjunto para realizar un seguimiento de los vértices visitados.
+     * Itera sobre todos los vértices en el grafo, y si un vértice no ha sido visitado, llama al método DFS en él.
+     * Los vértices se agregan a la lista en postorden, lo que significa que un vértice se agrega a la lista solo después de que todos sus vecinos hayan sido visitados.
+     *
+     * @return Una lista de listas de vértices, donde cada lista representa una posible ordenación topológica del grafo.
+     */
     public List<List<TVertice>> todasLasOrdenacionesTopologicas() {
         List<List<TVertice>> todasLasOrdenaciones = new ArrayList<>();
         List<TVertice> ordenacionActual = new ArrayList<>();
@@ -442,5 +481,34 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return todasLasOrdenaciones;
     }
+
+
+    /**
+     * Este método verifica si el grafo contiene ciclos.
+     * Utiliza la Búsqueda en Profundidad (DFS) para detectar ciclos en el grafo.
+     * Crea dos mapas para realizar un seguimiento de los vértices visitados y los vértices que están actualmente en la pila de recursión.
+     * Itera sobre todos los vértices en el grafo. Si un vértice no ha sido visitado, llama a la función dfsCiclo en él.
+     * Si la función dfsCiclo devuelve true, significa que se ha encontrado un ciclo y la función devuelve true.
+     * Si no se encuentran ciclos después de iterar sobre todos los vértices, la función devuelve false.
+     *
+     * @return true si el grafo contiene al menos un ciclo, false en caso contrario.
+     */
+    public boolean tieneCiclos() {
+        Map<Comparable, Boolean> visitados = new HashMap<>();
+        Map<Comparable, Boolean> enPila = new HashMap<>();
+
+        // Para cada vértice en el grafo
+        for (TVertice vertice : this.getVertices().values()) {
+            // Si el vértice no ha sido visitado, llama a la función dfsCiclo
+            if (!visitados.getOrDefault(vertice.getEtiqueta(), false)) {
+                if (vertice.dfsCiclo(visitados, enPila, this.getVertices())) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
 }
