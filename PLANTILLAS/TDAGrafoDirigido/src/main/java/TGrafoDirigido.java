@@ -236,16 +236,28 @@ public class TGrafoDirigido implements IGrafoDirigido {
         // Devolver la matriz de caminos con las distancias del camino más corto
         return matrizCaminos;
     }
-    //Floyd con predecesores.
-    public Double[][] floyd(int[][] predecesores) {
+    /**
+     * Este método implementa el algoritmo de Floyd-Warshall con predecesores.
+     * El algoritmo de Floyd-Warshall se utiliza para encontrar los caminos más cortos entre todos los pares de vértices en un grafo ponderado.
+     * Esta versión del algoritmo también mantiene un seguimiento de los predecesores de cada vértice en el camino más corto.
+     *
+     * @param predecesores Un array 2D para almacenar el predecesor de cada vértice en el camino más corto. Si es null, se crea un nuevo array.
+     * @return Un array 2D que representa las distancias del camino más corto entre cada par de vértices.
+     */
+    public Double[][] floyd_predecesores(int[][] predecesores) {
+        // Obtener la matriz de costos de los vértices
         Double[][] matrixFloyd = UtilGrafos.obtenerMatrizCostos(getVertices());
+
+        // Si el array de predecesores es null, crear un nuevo array
         if(predecesores == null){
             predecesores = new int[matrixFloyd.length][matrixFloyd.length];
         }
-        int i,j,k;
-        for (k = 0; k < vertices.size(); k++){
-            for (i = 0; i < vertices.size(); i++){
-                for (j = 0; j < vertices.size(); j++){
+
+        // Para cada vértice en el grafo
+        for (int k = 0; k < vertices.size(); k++){
+            for (int i = 0; i < vertices.size(); i++){
+                for (int j = 0; j < vertices.size(); j++){
+                    // Si el camino a través del vértice k es más corto, actualizar la matriz de costos y el array de predecesores
                     if(matrixFloyd[i][k] + matrixFloyd[k][j] < matrixFloyd[i][j]){
                         matrixFloyd[i][j] = matrixFloyd[i][k] + matrixFloyd[k][j];
                         predecesores[i][j] = k;
@@ -253,9 +265,18 @@ public class TGrafoDirigido implements IGrafoDirigido {
                 }
             }
         }
+
+        // Devolver la matriz de costos
         return matrixFloyd;
     }
 
+    /**
+     * Este método se utiliza para calcular la excentricidad de un vértice en el grafo.
+     * La excentricidad de un vértice es la distancia máxima desde el vértice a todos los demás vértices en el grafo.
+     *
+     * @param etiquetaVertice La etiqueta del vértice cuya excentricidad se va a calcular.
+     * @return La excentricidad del vértice. Si el vértice no existe en el grafo, devuelve null.
+     */
     @Override
     public Double obtenerExcentricidad(Comparable etiquetaVertice) {
         // Buscar el vértice en el grafo

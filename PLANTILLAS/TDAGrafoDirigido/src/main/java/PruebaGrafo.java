@@ -18,12 +18,18 @@ public class PruebaGrafo {
             TVertice vertice = iterador.next();
             System.out.printf(" " + vertice.getEtiqueta());
         }
-
-
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(gd.centroDelGrafo());
+        System.out.println(" ");
         System.out.println(" ");
         System.out.println(" ");
         TCaminos caminos = gd.todosLosCaminos("Santos", "Curitiba");
         caminos.imprimirCaminosConsola();
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
+
 
         // Crear los vértices
         TVertice v1 = new TVertice("1");
