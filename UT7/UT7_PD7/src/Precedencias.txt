@@ -1,0 +1,8 @@
+Matematica I,Algebra Linear, 6
+Matematica I,Calculo I, 6
+Programacion I,Matematica I, 6
+Programacion I,Programacion II, 6
+Programacion II,Programacion III, 6
+Programacion II,Algoritmos y Estructuras de Datos, 6
+Calculo I,Algoritmos y Estructuras de Datos, 6
+Calculo I,Calculo II, 6

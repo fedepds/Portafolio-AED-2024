@@ -1,0 +1,9 @@
+Matematica I
+Algebra Linear
+Calculo I
+Calculo II
+Programacion I
+Programacion II
+Programacion III
+Algoritmos y Estructuras de Datos
+Analisis de Sistemas
