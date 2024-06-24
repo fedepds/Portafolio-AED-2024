@@ -1,0 +1,138 @@
+UT8_PD4
+
+******************EJERCICIO 1******************
+	
+---------------PARTE 1---------------
+			
+			Los TDA a utilizar serían tres: 
+				-TVertices para representar los "Centros de Comunicaciones"
+				-TAristas para representar las conexiones entre los "Centros de Comunicaciones"
+				-TGrafoNoDirigido para representar todos los "Centros de Comunicaciones" y todas sus conexiones
+				
+			Para resolver la necesidad de la compañía se podrían utilizar los algoritmos de
+			Prim y/o Kruskal, ya que con cualquiera de los dos obtendríamos la menor cantidad de
+			enlaces de fibra óptica.
+			
+---------------PARTE 2---------------
+			
+			ALGORITMO DE PRIM
+
+Lenguaje natural: Dado un grafo no dirigido, se agregan todos sus vertices a una lista A, luego se agrega un vertice cualquiera de esta lista, a una lista B.
+				  Se toma la adyacencia de menor costo entre los vertices de la lista B y A, luego, se agrega dicha adyacencia a una lista, y se agrega sus vertice
+				  destino a la lista B, y se remueve de la lista A. Se sigue el mismo procedimiento hasta que todos los vertices 
+				  del grafo esten en la lista B.
+
+Precondiciones: El grafo original debe de ser conexo
+
+Postcondiciones: Se devolvera el AAM del grafo dado.
+				 El grafo dado permanecera inmutado.
+		
+					Prim(): TGrafoNoDirigido
+					COM
+						verticesAuxiliares <- this.obtenerVertices()
+						aristasMinimas <- Nueva Lista de Aristas
+						verticesAgregados <- Nueva lista de Vertices 
+						verticesAgregados.agregar(verticesAuxiliares.obtenerPrimero())
+						verticesAuxiliares.removerPrimero()
+						MIENTRAS verticesAuxiliares.tamaño <> 0 HACER 
+							aristaMinima <- obetenerAristaMinima(verticesAgregados, verticesAuxiliares)
+							aristasMinimas.agregar(aristaMinima)
+							verticesAgregados.agregar(aristaMinima.obetenerVerticeDestino()
+							verticesAuxiliares.remover(aristaMinima.obetenerVerticeDestino()) 
+						FIN MIENTRAS
+						DEVOLVER Nuevo TGrafoNoDirigido(verticesAgregados, aristasMinimas) 
+					FIN
+					
+					obetenerAristaMinima(u, v : Tipo Listas de vertices): TArista
+					COM
+						aristaMinima <- nueva arista
+						costoMinimo <- nuevo costo infinito
+						PARA CADA vertice en u HACER
+							PARA CADA vertice en v HACER
+								tempArista <- buscar(u,v)
+								SI tempArista <> nulo ENTONCES
+									SI tempArista.costo < costoMinimo ENTONCES
+										aristaMinima <- tempArista
+										costoMinimo <- tempArista.costo
+									FIN SI
+								FIN SI
+							FIN PARA
+						FIN PARA
+						DEVOLVER aristaMinima			
+					FIN
+			
+			ALGORITMO DE KRUSKAL
+
+Lenguaje natural: Dado un grafo no dirigido, se agregan todas sus aritas a una lista A y se ordena dicha lista de menor a mayor. Luego se crea 
+				  otro grafo no dirigido G con todos los vertices del orginal pero sin aristas. Posteriormente, se obtiene la primer arista de la lista A
+				  y se verifica que que sus vertices no esten ya conectados en el grafo G, si no estan conectados, se elimina esa arista de la lista A, y se
+				  inserta en el grafo G, si estan conectados, solo se elimina de la lista A. Se sigue este procedimeinto hasta que el grafo G sea conexo.
+
+Precondiciones: El grafo original debe de ser conexo
+
+Postcondiciones: Se devolvera el AAM del grafo dado.
+				 El grafo dado permanecera inmutado.
+			
+
+					Kruskal() : TGrafoNoDirigido
+					COM
+						nuevasAristas <- nueva Lista Aristas
+						arbolCostoMinimo <- nuevo TGrafoNoDirigido (this.vertices, nuevasAristas)
+						aristasOrdenadas <- this.aristas.ordenar()
+						
+						MIENTRAS NOT arbolCostoMinimo.esConexo() HACER
+							aristaMinima <- aristasOrdenadas.primero()
+							SI NOT arbolCostoMinimo.estanConectados(aristaMinima.origen, aristaMinima.destino) ENTONCES
+								arbolCostoMinimo.agregar(aristaMinima)
+							FIN SI
+							aristasOrdenadas.quitarPrimero()
+						FIN MIENTRAS
+						DEVOLVER arbolCostoMinimo
+					FIN
+					
+	
+	
+
+******************EJERCICIO 2******************
+	
+	Lenguaje natural: Dado un vertice A y otro B, se verifica si ambos pertenecen al grafo, si no es asi, no estan conectados y se devulve falso, si es asi, se visista A y
+					  se verifica que cada vertice adyacente a A no sea B, si alguno es B, se devuelve verdadero, sino, se repite el procedimiento 
+					  anterior con todos los vertices adyacentes a A que aun no se hayan visitado, tomandolos como el nuevo A, hasta que se encuentre que 
+					  un adyacente es B, o ya se hacen visitado todos los vertices del componente conexo del A original, donde se devolvera falso.
+					
+	Precondiciones: Lo vertices deben de ser validos.
+	
+	Postcondiciones: Lo svertices del grafo quedaran inmutados.
+					 El grafo quedara inmutado.
+					 Se devulve verdadero si los vertices pasados estan conectados, falso en caso contrario.
+
+
+	TGrafoNoDirigido
+	conectados(origen, destino : Tipo vertices) : booleano
+	COM	
+		desvisitarVertices()
+		SI NOT origen.esVerticeDe(this) AND destino.esVerticeDe(this) ENTONCES	
+			DEVOLVER falso
+		FINSI
+		DEVOLVER origen.conectadoCon(destino)
+	FIN
+	
+	TVertice
+	conectadoCon(destino : Tipo Vertice) : booleano
+	COM
+		visitar()
+		PARA CADA adyacencia a EN adyacentes HACER 
+			v <- a.destino
+			SI NOT v.visitado ENTONCES
+				SI v = destino ENTONCES 
+					DEVOLVER true
+				SINO
+					conectos <- v.conectadoCon(destino)
+					SI conectos ENTONCES
+						DEVOLVER true
+					FINSI
+				FINSI
+			FINSI
+		FINPARA
+		DEVOLVER false
+	FIN

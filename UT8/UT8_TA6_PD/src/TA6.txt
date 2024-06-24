@@ -1,0 +1,79 @@
+UT8_TA6
+
+******************EJERCICIO 1******************
+	
+---------------PARTE 2---------------
+			
+			Las estrutura de datos necesarias para implementar este algoritmo son:
+				-Un grafo no dirigido base: Podria ser una clase de grafo que tenga los vertices y las aritas.
+				-Vertices que representen los nodos del grago: Podria ser una clase TVertice que tenga su etiqueta y todos sus vertices adyacentes.
+				-Aristas que represente las coonexiones entre los vertices: Podría ser una clase TArista que tenga los vertices destino y origen y el costo de la misma.
+				-Colecciones de aritas y vertices a modo de simplificar la complejidad de la solucion: Podiran ser listas o alguna otra estrutura especifica con las operaciones correspondientes.
+				
+			Para lograr lo anterior si se podrian usar las estruturas que ya se tienen, sean estas el grafo dirigido, los vertices, las aristas, etc.
+			Lo que habría que agregarle seria una clase que fuera un grafo no dirigido, el cual puede extender del dirigido, y otra clase o estrutura que almacene las aritas en la clase de grafo no dirigido.
+			Ademas, se tendrian que agregar funcionalidades para lograr realizar el kruskal de la mejor manera.
+
+---------------PARTE 3---------------
+
+Lenguaje natural: Dado un grafo no dirigido, se agregan todas sus aritas a una lista A y se ordena dicha lista de menor a mayor. Luego se crea 
+				  otro grafo no dirigido G con todos los vertices del orginal pero sin aristas. Posteriormente, se obtiene la primer arista de la lista A
+				  y se verifica que que sus vertices no esten ya conectados en el grafo G, si no estan conectados, se elimina esa arista de la lista A, y se
+				  inserta en el grafo G, si estan conectados, solo se elimina de la lista A. Se sigue este procedimeinto hasta que el grafo G sea conexo.
+
+Precondiciones: El grafo original debe de ser conexo
+
+Postcondiciones: Se devolvera el AAM del grafo dado.
+				 El grafo dado permanecera inmutado.
+			
+
+					TGragoNoDirigido
+					Kruskal() : TGrafoNoDirigido
+					COM
+						nuevasAristas <- nueva Lista Aristas
+						grafoCostoMinimo <- nuevo TGrafoNoDirigido (this.vertices, nuevasAristas)
+						aristasOrdenadas <- this.aristas.ordenar()
+						
+						MIENTRAS NOT arbolCostoMinimo.esConexo() HACER
+							aristaMinima <- aristasOrdenadas.primero()
+							SI NOT grafoCostoMinimo.estanConectados(aristaMinima.origen, aristaMinima.destino) ENTONCES
+								grafoCostoMinimo.agregar(aristaMinima)
+							FIN SI
+							aristasOrdenadas.quitarPrimero()
+						FIN MIENTRAS
+						DEVOLVER grafoCostoMinimo
+					FIN
+					
+					TGrafoNoDirigido
+					estanConectados(origen, destino : Tipo vertices) : booleano
+					COM	
+						desvisitarVertices()
+						SI NOT origen.esVerticeDe(this) AND destino.esVerticeDe(this) ENTONCES	
+							DEVOLVER falso
+						FINSI
+						DEVOLVER origen.conectadoCon(destino)
+					FIN
+					
+					TVertice
+					conectadoCon(destino : Tipo Vertice) : booleano
+					COM
+						visitar()
+						PARA CADA adyacencia a EN adyacentes HACER 
+							v <- a.destino
+							SI NOT v.visitado ENTONCES
+								SI v = destino ENTONCES 
+									DEVOLVER true
+								SINO
+									conectos <- v.conectadoCon(destino)
+									SI conectos ENTONCES
+										DEVOLVER true
+									FINSI
+								FINSI
+							FINSI
+						FINPARA
+						DEVOLVER false
+					FIN
+					
+******************EJERCICIO 2******************
+					
+Los resultados de prim y kruskal son identicos y concuerdan con lo realizado a mano mostrado en las imagenes.

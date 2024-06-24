@@ -1,6 +1,5 @@
 
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
 
 public class TVertice<T> implements IVertice, IVerticeKevinBacon {
 
@@ -220,6 +219,32 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
                 }
             }
         }
+    }
+    public void ordenacionTopologicaDFS(Set<Comparable> visitados, Stack<TVertice> pila) {
+        visitados.add(this.getEtiqueta());
+        for (TAdyacencia a : this.getAdyacentes()) {
+            TVertice w = a.getDestino();
+            if (!visitados.contains(w.getEtiqueta())) {
+                w.ordenacionTopologicaDFS(visitados, pila);
+            }
+        }
+        pila.push(this);
+    }
+    public void todasLasOrdenacionesTopologicasDFS(Set<Comparable> visitados, List<TVertice> ordenacionActual, List<List<TVertice>> todasLasOrdenaciones) {
+        visitados.add(this.getEtiqueta());
+        ordenacionActual.add(this);
+        if (visitados.size() == this.getAdyacentes().size()) {
+            todasLasOrdenaciones.add(new ArrayList<>(ordenacionActual));
+        } else {
+            for (TAdyacencia a : this.getAdyacentes()) {
+                TVertice w = a.getDestino();
+                if (!visitados.contains(w.getEtiqueta())) {
+                    w.todasLasOrdenacionesTopologicasDFS(visitados, ordenacionActual, todasLasOrdenaciones);
+                }
+            }
+        }
+        ordenacionActual.remove(this);
+        visitados.remove(this.getEtiqueta());
     }
 
 

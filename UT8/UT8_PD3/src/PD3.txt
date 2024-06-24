@@ -1,0 +1,76 @@
+EJERCICIO 1
+
+---------PARTE 1---------
+
+Una solución al problema seria utilizando un grafo no dirigido.
+Los nodos del grafo podrian representar las casas, mientras que las aristas pueden representar las conexiones entre las casas.
+Una vez logrado esto, se puede hacer el grafo dirigido de costo minimo (AAM), mediante Prim o Kruskal para obetener el minimo costo total de conexiones entre las casas.
+
+---------PARTE 2---------
+
+Estructuras necesarias:
+
+Un Grafo No Dirigido para reprenstar las cosas (sean estas, por ejemplo, las casas) y conexiones de las mismas en su conjunto.
+	Eventualmente se necesitara una estructura para los nodos o vertices del grafo, los cuales representarian las casas.
+	Eventualmente se necesitara una estructura para las conexiones entre los nodos y vertices, sean estas las aristas, las cuales representarian las conexiones del cableado entre las casas.
+	
+---------PARTE 3---------
+
+(Para esta solución se decidio utilizar prim)
+
+Lenguaje natural: Dado un grafo no dirigido, se agregan todos sus vertices a una lista A, luego se agrega un vertice cualquiera de esta lista, a una lista B,
+				  y se toma la adyacencia de menor costo entre los vertices de la lista B y A, luego, se agrega dicha adyacencia a una lista, y se agrega sus vertice
+				  destino a la lista B, y se remueve de la lista A. Se sigue el mismo procedimiento hasta que todos los vertices 
+				  del grafo esten en la lista B.
+				  
+Precondiciones: El grafo original debe de ser conexo
+
+Postcondiciones: Se devolvera el AAM del grafo dado.
+				 El grafo dado permanecera inmutado.
+
+TGrafoNoDirigido
+Prim():TGrafoNoDirigido
+COM
+	verticesAuxiliares <- this.obtenerVertices() ---O(1)
+	aristasMinimas <- Nueva lista de Aristas ---O(1)
+	verticesAgregados <- Nueva lista de Vertices ---O(1)
+	verticesAgregados.agregar(verticesAuxiliares.obtenerPrimero()) ---O(1)
+	verticesAuxiliares.removerPrimero() ---O(1)
+	MIENTRAS verticesAuxiliares.tamaño <> 0 HACER ---O(N)
+		aristaMinima <- obetenerAristaMinima(verticesAgregados, verticesAuxiliares) ---O(A)
+		aristasMinimas.agregar(aristaMinima) ---O(1)
+		verticesAgregados.agregar(aristaMinima.obetenerVerticeDestino()) ---O(1)
+		verticesAuxiliares.remover(aristaMinima.obetenerVerticeDestino()) ---O(N)
+	FIN MIENTRAS
+	DEVOLVER Nuevo TGrafoNoDirigido(verticesAgregados, aristasMinimas)
+FIN
+
+---------PARTE 4---------
+
+El orden del tiempo de la aplicacion de la solucion propuesta es O(N^2) siendo N el numero de vertices del grafo, que serian, en este caso, las casas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

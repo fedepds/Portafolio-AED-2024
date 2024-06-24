@@ -1,6 +1,5 @@
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class PruebaGrafo {
 
@@ -26,14 +25,43 @@ public class PruebaGrafo {
         TCaminos caminos = gd.todosLosCaminos("Santos", "Curitiba");
         caminos.imprimirCaminosConsola();
 
+        // Crear los vértices
+        TVertice v1 = new TVertice("1");
+        TVertice v2 = new TVertice("2");
+        TVertice v3 = new TVertice("3");
+        TVertice v4 = new TVertice("4");
+        TVertice v5 = new TVertice("5");
+
+        // Crear las aristas
+        TArista a12 = new TArista("1", "2", 1);
+        TArista a13 = new TArista("1", "3", 1);
+        TArista a24 = new TArista("2", "4", 1);
+        TArista a35 = new TArista("3", "5", 1);
+        TArista a45 = new TArista("4", "5", 1);
+
+        // Crear listas de vértices y aristas
+        List<TVertice> vertices = Arrays.asList(v1, v2, v3, v4, v5);
+        List<TArista> aristas = Arrays.asList(a12, a13, a24, a35, a45);
+
+        // Crear el grafo dirigido
+        TGrafoDirigido grafo = new TGrafoDirigido(vertices, aristas);
+
+        // Realizar la ordenación topológica
+        Stack<TVertice> ordenTopologico = grafo.ordenacionTopologica();
+
+        // Imprimir la ordenación topológica
+        while (!ordenTopologico.isEmpty()) {
+            System.out.println(ordenTopologico.pop().getEtiqueta());
+        }
+
         //Grafo no dirigido
 
-        TGrafoNoDirigido grafo = UtilGrafos.cargarGrafo("src/main/java/verticesBEA.txt", "src/main/java/aristasBEA.txt",
+        TGrafoNoDirigido grafoNoDirigido = UtilGrafos.cargarGrafo("src/main/java/verticesBEA.txt", "src/main/java/aristasBEA.txt",
                 false, TGrafoNoDirigido.class);
         System.out.println("Grafo cargado en memoria");
 
         System.out.println("Busqueda en amplitud: Sin vertice especificado");
-        Iterator<TVertice> it = grafo.bea().iterator();
+        Iterator<TVertice> it = grafoNoDirigido.bea().iterator();
         while (it.hasNext()) {
             TVertice v = it.next();
             System.out.println(v.getEtiqueta());

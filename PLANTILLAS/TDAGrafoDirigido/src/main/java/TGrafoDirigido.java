@@ -137,7 +137,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return false;
     }
     @Override
- public boolean insertarVertice(TVertice vertice) {
+    public boolean insertarVertice(TVertice vertice) {
      Comparable unaEtiqueta = vertice.getEtiqueta();
      if (!existeVertice(unaEtiqueta)) {
             getVertices().put(unaEtiqueta, vertice);
@@ -421,8 +421,26 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return null;
     }
+    public Stack<TVertice> ordenacionTopologica() {
+        Stack<TVertice> pila = new Stack<>();
+        Set<Comparable> visitados = new HashSet<>();
+        for (TVertice v : vertices.values()) {
+            if (!visitados.contains(v.getEtiqueta())) {
+                v.ordenacionTopologicaDFS(visitados, pila);
+            }
+        }
+        return pila;
+    }
+    public List<List<TVertice>> todasLasOrdenacionesTopologicas() {
+        List<List<TVertice>> todasLasOrdenaciones = new ArrayList<>();
+        List<TVertice> ordenacionActual = new ArrayList<>();
+        Set<Comparable> visitados = new HashSet<>();
+        for (TVertice v : vertices.values()) {
+            if (!visitados.contains(v.getEtiqueta())) {
+                v.todasLasOrdenacionesTopologicasDFS(visitados, ordenacionActual, todasLasOrdenaciones);
+            }
+        }
+        return todasLasOrdenaciones;
+    }
 
-
-    
-    
 }
