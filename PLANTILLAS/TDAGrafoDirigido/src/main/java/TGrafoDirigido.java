@@ -530,6 +530,44 @@ public class TGrafoDirigido implements IGrafoDirigido {
 
         return false;
     }
+    /**
+     * Este método realiza una ordenación topológica en el grafo y devuelve el resultado como una LinkedList.
+     * Una ordenación topológica es un ordenamiento lineal de sus vértices de manera que para cada arista dirigida (u, v) desde el vértice u al vértice v, u viene antes que v en la ordenación.
+     * Este método utiliza la Búsqueda en Profundidad (DFS) para realizar la ordenación topológica.
+     * Crea una LinkedList para almacenar el orden actual y un HashSet para realizar un seguimiento de los vértices visitados.
+     * Itera sobre todos los vértices en el grafo, y si un vértice no ha sido visitado, llama al método DFS en él.
+     * Los vértices se agregan a la LinkedList en postorden, lo que significa que un vértice se agrega a la LinkedList solo después de que todos sus vecinos hayan sido visitados.
+     *
+     * @return Una LinkedList de vértices que representa el orden topológico del grafo.
+     */
+    public LinkedList<TVertice> ordenacionTopologica_lista() {
+        LinkedList<TVertice> lista = new LinkedList<>();
+        Set<Comparable> visitados = new HashSet<>();
+        for (TVertice v : vertices.values()) {
+            if (!visitados.contains(v.getEtiqueta())) {
+                v.ordenacionTopologicaDFS_Lista(visitados, lista);
+            }
+        }
+        return lista;
+    }
+
+
+
+    /**
+     * Este método se utiliza para imprimir las etiquetas de los vértices en el orden dado.
+     * Itera sobre la LinkedList de vértices e imprime la etiqueta de cada vértice.
+     *
+     * @param orden Una LinkedList de vértices que representa el orden en el que se deben imprimir las etiquetas de los vértices.
+     */
+    public void listarVertices(LinkedList<TVertice> orden) {
+        for (TVertice vertice : orden) {
+            System.out.println(vertice.getEtiqueta());
+        }
+    }
+
+
+
+
 
 
 }

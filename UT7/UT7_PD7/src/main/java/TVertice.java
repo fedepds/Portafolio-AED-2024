@@ -312,6 +312,17 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
 
         return false;
     }
+    /**
+     * Este método realiza una Búsqueda en Profundidad (DFS) en el grafo para generar una ordenación topológica de los vértices.
+     * Una ordenación topológica es una ordenación lineal de sus vértices tal que para cada arista dirigida (u, v) del vértice u al vértice v, u viene antes que v en la ordenación.
+     * El método utiliza un enfoque recursivo para recorrer el grafo.
+     * Añade el vértice actual al conjunto de vértices visitados y luego itera sobre todos los vértices adyacentes.
+     * Si un vértice adyacente no ha sido visitado, llama recursivamente al método sobre él.
+     * Después de visitar todos los vértices adyacentes, el vértice actual se añade al principio de la lista, que finalmente contendrá la ordenación topológica de los vértices.
+     *
+     * @param visitados Un conjunto de vértices visitados.
+     * @param lista Una lista para contener la ordenación topológica de los vértices.
+     */
     public void ordenacionTopologicaDFS_Lista(Set<Comparable> visitados, LinkedList<TVertice> lista) {
         visitados.add(this.getEtiqueta());
         for (TAdyacencia a : this.getAdyacentes()) {
@@ -321,7 +332,6 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
             }
         }
         lista.addFirst(this);
-
     }
 
 
