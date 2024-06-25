@@ -564,6 +564,17 @@ public class TGrafoDirigido implements IGrafoDirigido {
             System.out.println(vertice.getEtiqueta());
         }
     }
+    public boolean estanConectados(Comparable origen, Comparable destino){
+        desvisitarVertices();
+        TVertice verticeOrigen = getVertices().get(origen);
+        TVertice verticeDestino = getVertices().get(destino);
+        if(verticeOrigen == null | verticeDestino == null){
+            return false;
+        }
+        boolean result = verticeOrigen.conectadoCon(verticeDestino);
+        desvisitarVertices();
+        return result && verticeDestino.conectadoCon(verticeOrigen);
+    }
 
 
 

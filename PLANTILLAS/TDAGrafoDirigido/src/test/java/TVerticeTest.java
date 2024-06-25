@@ -206,6 +206,39 @@ class TVerticeTest {
         assertTrue(lista.contains(verticeB));
         assertTrue(lista.contains(verticeC));
     }
+    @Test
+    void conectadoCon_withNoAdjacentVertices() {
+        TVertice verticeA = new TVertice("A");
+        TVertice verticeB = new TVertice("B");
+        assertFalse(verticeA.conectadoCon(verticeB));
+    }
+
+    @Test
+    void conectadoCon_withOneAdjacentVertex() {
+        TVertice verticeA = new TVertice("A");
+        TVertice verticeB = new TVertice("B");
+        verticeA.insertarAdyacencia(1.0, verticeB);
+        assertTrue(verticeA.conectadoCon(verticeB));
+    }
+
+    @Test
+    void conectadoCon_withMultipleAdjacentVertices() {
+        TVertice verticeA = new TVertice("A");
+        TVertice verticeB = new TVertice("B");
+        TVertice verticeC = new TVertice("C");
+        verticeA.insertarAdyacencia(1.0, verticeB);
+        verticeB.insertarAdyacencia(1.0, verticeC);
+        assertTrue(verticeA.conectadoCon(verticeC));
+    }
+
+    @Test
+    void conectadoCon_withNonAdjacentVertex() {
+        TVertice verticeA = new TVertice("A");
+        TVertice verticeB = new TVertice("B");
+        TVertice verticeC = new TVertice("C");
+        verticeA.insertarAdyacencia(1.0, verticeB);
+        assertFalse(verticeA.conectadoCon(verticeC));
+    }
 
 
 

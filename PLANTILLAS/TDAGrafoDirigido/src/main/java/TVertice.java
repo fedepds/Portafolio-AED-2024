@@ -335,5 +335,33 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
         lista.addFirst(this);
     }
 
+    /**
+     * Este método verifica si existe un camino desde el vértice actual hasta el vértice de destino proporcionado.
+     * Marca el vértice actual como visitado y luego itera sobre todos los vértices adyacentes.
+     * Si un vértice adyacente no ha sido visitado, verifica si es el vértice de destino.
+     * Si es el vértice de destino, el método devuelve verdadero, indicando que existe un camino.
+     * Si no es el vértice de destino, el método se llama a sí mismo recursivamente en el vértice adyacente.
+     * Si la llamada recursiva devuelve verdadero, el método devuelve verdadero.
+     * Si no se encuentra ningún camino después de verificar todos los vértices adyacentes, el método devuelve falso.
+     *
+     * @param destino El vértice de destino.
+     * @return verdadero si existe un camino desde el vértice actual hasta el vértice de destino, falso en caso contrario.
+     */
+    public boolean conectadoCon(TVertice destino) {
+        setVisitado(true);
+        for (TAdyacencia a : getAdyacentes()){
+            if(!a.getDestino().getVisitado()){
+                if(a.getDestino().equals(destino)){
+                    return true;
+                }else{
+                    boolean resultDes = a.getDestino().conectadoCon(destino);
+                    if(resultDes){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
 }
