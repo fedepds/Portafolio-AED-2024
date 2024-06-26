@@ -542,10 +542,9 @@ public class TGrafoDirigido implements IGrafoDirigido {
     public List<List<TVertice>> todasLasOrdenacionesTopologicas() {
         List<List<TVertice>> todasLasOrdenaciones = new ArrayList<>();
         List<TVertice> ordenacionActual = new ArrayList<>();
-        Set<Comparable> visitados = new HashSet<>();
         for (TVertice v : vertices.values()) {
-            if (!visitados.contains(v.getEtiqueta())) {
-                v.todasLasOrdenacionesTopologicasDFS(visitados, ordenacionActual, todasLasOrdenaciones);
+            if (!v.getVisitado()) {
+                v.todasLasOrdenacionesTopologicasDFS( ordenacionActual, todasLasOrdenaciones);
             }
         }
         return todasLasOrdenaciones;

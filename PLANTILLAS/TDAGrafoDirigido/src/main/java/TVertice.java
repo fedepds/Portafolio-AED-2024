@@ -260,21 +260,22 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
      * @param ordenacionActual Una lista que representa la ordenación actual.
      * @param todasLasOrdenaciones Una lista de listas de vértices, donde cada lista representa una posible ordenación topológica del grafo.
      */
-    public void todasLasOrdenacionesTopologicasDFS(Set<Comparable> visitados, List<TVertice> ordenacionActual, List<List<TVertice>> todasLasOrdenaciones) {
-        visitados.add(this.getEtiqueta());
-        ordenacionActual.add(this);
-        if (visitados.size() == this.getAdyacentes().size()) {
-            todasLasOrdenaciones.add(new ArrayList<>(ordenacionActual));
-        } else {
-            for (TAdyacencia a : this.getAdyacentes()) {
-                TVertice w = a.getDestino();
-                if (!visitados.contains(w.getEtiqueta())) {
-                    w.todasLasOrdenacionesTopologicasDFS(visitados, ordenacionActual, todasLasOrdenaciones);
+    public void todasLasOrdenacionesTopologicasDFS(List<TVertice> ordenacionActual, List<List<TVertice>> todasLasOrdenaciones) {
+        setVisitado(true);
+        if (!ordenacionActual.contains(this)) {
+            ordenacionActual.add(this);
+            if (ordenacionActual.size() == this.getAdyacentes().size()) {
+                todasLasOrdenaciones.add(new ArrayList<>(ordenacionActual));
+            } else {
+                for (TAdyacencia a : this.getAdyacentes()) {
+                    TVertice w = a.getDestino();
+                    if (!ordenacionActual.contains(w)) {
+                        w.todasLasOrdenacionesTopologicasDFS(ordenacionActual, todasLasOrdenaciones);
+                    }
                 }
             }
+            ordenacionActual.remove(this);
         }
-        ordenacionActual.remove(this);
-        visitados.remove(this.getEtiqueta());
     }
 
 
