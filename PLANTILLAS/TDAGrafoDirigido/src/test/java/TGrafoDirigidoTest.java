@@ -360,6 +360,57 @@ class TGrafoDirigidoTest {
         assertEquals(2, result.length);
         assertEquals(1.0, result[0][1]);
     }
+    /*
+    @Test
+    void dijkstra_withSingleVertex() {
+        HashSet<TVertice> vertices = new HashSet<>();
+        vertices.add(new TVertice("A"));
+        TGrafoDirigido graph = new TGrafoDirigido(vertices, new HashSet<>());
+        ArrayList<Double> result = graph.dijkstra("A");
+        assertEquals(1, result.size());
+        assertEquals(0.0, result.get(0));
+    }
+
+  @Test
+    void dijkstra_withTwoVerticesAndOneEdge() {
+        HashSet<TVertice> vertices = new HashSet<>();
+        vertices.add(new TVertice("A"));
+        vertices.add(new TVertice("B"));
+        HashSet<TArista> aristas = new HashSet<>();
+        aristas.add(new TArista("A", "B", 1.0));
+        TGrafoDirigido graph = new TGrafoDirigido(vertices, aristas);
+        ArrayList<Double> result = graph.dijkstra("A");
+        assertEquals(2, result.size());
+        assertEquals(0.0, result.get(0));
+        assertEquals(1.0, result.get(1));
+    }
+
+    @Test
+    void dijkstra_withThreeVerticesAndTwoEdges() {
+        HashSet<TVertice> vertices = new HashSet<>();
+        vertices.add(new TVertice("A"));
+        vertices.add(new TVertice("B"));
+        vertices.add(new TVertice("C"));
+        HashSet<TArista> aristas = new HashSet<>();
+        aristas.add(new TArista("A", "B", 1.0));
+        aristas.add(new TArista("B", "C", 2.0));
+        TGrafoDirigido graph = new TGrafoDirigido(vertices, aristas);
+        ArrayList<Double> result = graph.dijkstra("A");
+        assertEquals(3, result.size());
+        assertEquals(0.0, result.get(0));
+        assertEquals(1.0, result.get(1));
+        assertEquals(3.0, result.get(2));
+    }
+
+    @Test
+    void dijkstra_withNonExistentVertex() {
+        HashSet<TVertice> vertices = new HashSet<>();
+        vertices.add(new TVertice("A"));
+        TGrafoDirigido graph = new TGrafoDirigido(vertices, new HashSet<>());
+        ArrayList<Double> result = graph.dijkstra("B");
+        assertNull(result);
+    }*/
+
 
 }
 

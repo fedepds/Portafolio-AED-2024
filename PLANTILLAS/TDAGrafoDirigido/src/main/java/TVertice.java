@@ -363,5 +363,15 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
         }
         return false;
     }
+    public Double costoAunaAdy(Comparable etiquetaVertice){
+        for(TAdyacencia ady : this.adyacentes){
+            if(ady.getEtiqueta().equals(etiquetaVertice))
+                return ady.getCosto();
+        }
+        return Double.MAX_VALUE;
+    }
+    public Double costoAOtroVertice(LinkedList<Comparable> vertices, ArrayList<Double> D, Comparable etiquetaVertice){
+        return D.get(vertices.indexOf(etiquetaVertice));
+    }
 
 }

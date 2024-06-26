@@ -196,6 +196,55 @@ public class TGrafoDirigido implements IGrafoDirigido {
         // Devolver el centro del grafo
         return centro;
     }
+    public ArrayList<Double> dijkstra(Comparable origen) {
+        LinkedList<Comparable> todosLosV = new LinkedList<>(vertices.keySet());
+        todosLosV.remove(origen);
+        LinkedList<Comparable> verticesL = new LinkedList<>(vertices.keySet());
+        verticesL.remove(origen);
+
+        ArrayList<TVertice> S = new ArrayList<>();
+        ArrayList<Double> D = new ArrayList<>();
+        ArrayList<TVertice> P = new ArrayList<>();
+
+        S.add(this.vertices.get(origen));
+        verticesL.remove(origen);
+
+        TVertice orig = this.vertices.get(origen);
+        for (Comparable i : verticesL) {
+            D.add(orig.costoAunaAdy(i));
+        }
+        ArrayList<Double> ant = new ArrayList<>();
+        int n = 0;
+        while (verticesL.size() > 0 && n < this.vertices.size()) {
+            n++;
+            TVertice w = elegirMinimo(todosLosV, D, ant);
+            ant.add(orig.costoAOtroVertice(todosLosV, D, w.getEtiqueta()));
+            S.add(w);
+            verticesL.remove(w.getEtiqueta());
+            for (Comparable v : verticesL) {
+                Double cOW = orig.costoAOtroVertice(todosLosV, D, w.getEtiqueta());
+                Double cWV = w.costoAunaAdy(v);
+                Double cOV = orig.costoAOtroVertice(todosLosV, D, v);
+                if (cOW + cWV < cOV) {
+                    D.set(todosLosV.indexOf(v), cOW + cWV);
+                    P.add(w);
+                }
+            }
+        }
+
+        return D;
+    }
+    private TVertice elegirMinimo(LinkedList<Comparable> vertices, ArrayList<Double> D, ArrayList<Double> anteriores) {
+        Double costo = Double.MAX_VALUE;
+        int pos = 0;
+        for (int i = 0; i < D.size(); i++) {
+            if (D.get(i) < costo && !anteriores.contains(D.get(i))) {
+                costo = D.get(i);
+                pos = i;
+            }
+        }
+        return this.vertices.get(vertices.get(pos));
+    }
 
     /**
      * Este método implementa el algoritmo de Floyd-Warshall para encontrar los caminos más cortos entre todos los pares de vértices en el grafo.
