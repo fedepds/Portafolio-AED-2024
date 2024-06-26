@@ -256,7 +256,6 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
      * Itera sobre todos los vértices del grafo, y si un vértice no ha sido visitado, llama al método DFS sobre él.
      * Los vértices se añaden a la lista en postorden, lo que significa que un vértice se añade a la lista solo después de que todos sus vecinos hayan sido visitados.
      *
-     * @param visitados Un conjunto de vértices visitados.
      * @param ordenacionActual Una lista que representa la ordenación actual.
      * @param todasLasOrdenaciones Una lista de listas de vértices, donde cada lista representa una posible ordenación topológica del grafo.
      */
@@ -283,14 +282,14 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
      * Este método implementa el algoritmo de Búsqueda en Profundidad (DFS) para detectar ciclos en un grafo.
      * Utiliza un enfoque recursivo para recorrer el grafo.
      *
-     * @param visitados Un mapa que realiza un seguimiento de los vértices visitados. La clave es la etiqueta del vértice y el valor es un booleano que indica si el vértice ha sido visitado.
-     * @param enPila Un mapa que realiza un seguimiento de los vértices que están actualmente en la pila de recursión. La clave es la etiqueta del vértice y el valor es un booleano que indica si el vértice está en la pila.
+     * @param enPila Un mapa que realiza un seguimiento de los vértices que están actualmente en la pila de recursión.
+     *               La clave es la etiqueta del vértice y el valor es un booleano que indica si el vértice está en la pila.
      * @param vertices Un mapa de todos los vértices en el grafo. La clave es la etiqueta del vértice y el valor es el objeto vértice.
      * @return true si se detecta un ciclo en el grafo, false en caso contrario.
      */
-    public boolean dfsCiclo(Map<Comparable, Boolean> visitados, Map<Comparable, Boolean> enPila, Map<Comparable, TVertice> vertices) {
+    public boolean dfsCiclo(Map<Comparable, Boolean> enPila, Map<Comparable, TVertice> vertices) {
         // Marca el vértice actual como visitado y lo añade a la pila de recorrido
-        visitados.put(this.getEtiqueta(), true);
+        setVisitado(true);
         enPila.put(this.getEtiqueta(), true);
 
         // Para cada vértice adyacente al vértice actual
@@ -298,8 +297,8 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
             TVertice verticeAdyacente = vertices.get(adyacente.getEtiqueta());
 
             // Si el vértice adyacente no ha sido visitado, llama recursivamente a la función dfsCiclo
-            if (!visitados.getOrDefault(adyacente.getEtiqueta(), false)) {
-                if (verticeAdyacente.dfsCiclo(visitados, enPila, vertices)) {
+            if (!verticeAdyacente.getVisitado()) {
+                if (verticeAdyacente.dfsCiclo(enPila, vertices)) {
                     return true;
                 }
             }

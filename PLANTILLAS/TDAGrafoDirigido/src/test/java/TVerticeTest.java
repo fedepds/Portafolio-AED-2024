@@ -151,7 +151,7 @@ class TVerticeTest {
         Map<Comparable, TVertice> vertices = new HashMap<>();
         vertices.put(verticeA.getEtiqueta(), verticeA);
         vertices.put(verticeB.getEtiqueta(), verticeB);
-        assertFalse(verticeA.dfsCiclo(visitados, enPila, vertices));
+        assertFalse(verticeA.dfsCiclo(enPila, vertices));
     }
 
     @Test
@@ -160,12 +160,11 @@ class TVerticeTest {
         TVertice verticeB = new TVertice("B");
         verticeA.insertarAdyacencia(1.0, verticeB);
         verticeB.insertarAdyacencia(1.0, verticeA);
-        Map<Comparable, Boolean> visitados = new HashMap<>();
         Map<Comparable, Boolean> enPila = new HashMap<>();
         Map<Comparable, TVertice> vertices = new HashMap<>();
         vertices.put(verticeA.getEtiqueta(), verticeA);
         vertices.put(verticeB.getEtiqueta(), verticeB);
-        assertTrue(verticeA.dfsCiclo(visitados, enPila, vertices));
+        assertTrue(verticeA.dfsCiclo(enPila, vertices));
     }
 
     @Test

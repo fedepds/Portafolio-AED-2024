@@ -562,14 +562,13 @@ public class TGrafoDirigido implements IGrafoDirigido {
      * @return true si el grafo contiene al menos un ciclo, false en caso contrario.
      */
     public boolean tieneCiclos() {
-        Map<Comparable, Boolean> visitados = new HashMap<>();
         Map<Comparable, Boolean> enPila = new HashMap<>();
 
         // Para cada vértice en el grafo
         for (TVertice vertice : this.getVertices().values()) {
             // Si el vértice no ha sido visitado, llama a la función dfsCiclo
-            if (!visitados.getOrDefault(vertice.getEtiqueta(), false)) {
-                if (vertice.dfsCiclo(visitados, enPila, this.getVertices())) {
+            if (! vertice.getVisitado()) {
+                if (vertice.dfsCiclo(enPila, this.getVertices())) {
                     return true;
                 }
             }
@@ -589,7 +588,6 @@ public class TGrafoDirigido implements IGrafoDirigido {
      */
     public LinkedList<TVertice> ordenacionTopologica_lista() {
         LinkedList<TVertice> lista = new LinkedList<>();
-        Set<Comparable> visitados = new HashSet<>();
         for (TVertice v : vertices.values()) {
             if (!v.getVisitado()) {
                 v.ordenacionTopologicaDFS_Lista(lista);
