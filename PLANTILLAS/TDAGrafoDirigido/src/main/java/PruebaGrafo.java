@@ -4,7 +4,7 @@ import java.util.*;
 public class PruebaGrafo {
 
     public static void main(String[] args) {
-/*
+
         //Grafo dirigido
 
         TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/main/java/aeropuertos.txt", "src/main/java/conexiones.txt",
@@ -91,7 +91,7 @@ public class PruebaGrafo {
                 String.valueOf(grafo2.numBacon("Lukas_Haas")),
                 String.valueOf(grafo2.numBacon("Djimon_Hounsou")) };
 
-        ManejadorArchivosGenerico.escribirArchivo("SALIDA", bacon);*/
+        ManejadorArchivosGenerico.escribirArchivo("SALIDA", bacon);
 
         TGrafoNoDirigido[] grafos = new TGrafoNoDirigido[3];
         grafos[0] = UtilGrafos.cargarGrafo("src/vertices.txt", "src/aristas_0.txt", false, TGrafoNoDirigido.class);
