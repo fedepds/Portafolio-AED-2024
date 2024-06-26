@@ -236,15 +236,15 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
      * Si un vértice adyacente no ha sido visitado, llama recursivamente al método sobre él.
      * Después de visitar todos los vértices adyacentes, el vértice actual se empuja a la pila, que finalmente contendrá la ordenación topológica de los vértices.
      *
-     * @param visitados Un conjunto de vértices visitados.
+     * .
      * @param pila Una pila para contener la ordenación topológica de los vértices.
      */
-    public void ordenacionTopologicaDFS(Set<Comparable> visitados, Stack<TVertice> pila) {
-        visitados.add(this.getEtiqueta());
+    public void ordenacionTopologicaDFS(Stack<TVertice> pila) {
+        setVisitado(true);
         for (TAdyacencia a : this.getAdyacentes()) {
             TVertice w = a.getDestino();
-            if (!visitados.contains(w.getEtiqueta())) {
-                w.ordenacionTopologicaDFS(visitados, pila);
+            if (!w.getVisitado()) {
+                w.ordenacionTopologicaDFS(pila);
             }
         }
         pila.push(this);
@@ -321,15 +321,15 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
      * Si un vértice adyacente no ha sido visitado, llama recursivamente al método sobre él.
      * Después de visitar todos los vértices adyacentes, el vértice actual se añade al principio de la lista, que finalmente contendrá la ordenación topológica de los vértices.
      *
-     * @param visitados Un conjunto de vértices visitados.
+     *
      * @param lista Una lista para contener la ordenación topológica de los vértices.
      */
-    public void ordenacionTopologicaDFS_Lista(Set<Comparable> visitados, LinkedList<TVertice> lista) {
-        visitados.add(this.getEtiqueta());
+    public void ordenacionTopologicaDFS_Lista(LinkedList<TVertice> lista) {
+        setVisitado(true);
         for (TAdyacencia a : this.getAdyacentes()) {
             TVertice w = a.getDestino();
-            if (!visitados.contains(w.getEtiqueta())) {
-                w.ordenacionTopologicaDFS_Lista(visitados, lista);
+            if (!w.getVisitado()) {
+                w.ordenacionTopologicaDFS_Lista(lista);
             }
         }
         lista.addFirst(this);

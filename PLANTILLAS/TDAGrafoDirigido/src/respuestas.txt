@@ -1,0 +1,8 @@
+PARTE 4
+Además de utilizar las estructuras de datos básicas como el grafo no dirigido, los vértices y las aristas, se empleó una colección de aristas a modo de lista auxiliar. Esto permitió obtener de manera más rápida y sencilla las aristas disponibles. El orden del tiempo de ejecución de esta implementación es de O(a^2). En el peor de los casos, se recorren todas las aristas del grafo AAM. Además, por cada recorrido, es necesario recorrer todas las aristas nuevamente para determinar el mínimo y verificar si dos grafos están conectados, entre otras operaciones. Por lo tanto, debido a las reglas de orden, el tiempo de ejecución es O(a^2).
+
+PARTE 5
+Otra implementación posible sería el uso de un hashmap u otro tipo de lista auxiliar que permita obtener rápidamente las conexiones entre dos vértices y determinar los componentes conexos del grafo.
+
+PARTE 6
+En mi opinión, el consumo de memoria es menor en este caso. Aunque se utiliza una lista auxiliar de aristas, esto no es muy significativo porque, al final, dicha lista estará contenida en el grafo no dirigido una vez creado. Aun así, se gasta un poco más de memoria debido a la "duplicación" de las colecciones utilizadas.

@@ -473,10 +473,9 @@ public class TGrafoDirigido implements IGrafoDirigido {
      */
     public Stack<TVertice> ordenacionTopologica() {
         Stack<TVertice> pila = new Stack<>();
-        Set<Comparable> visitados = new HashSet<>();
         for (TVertice v : vertices.values()) {
-            if (!visitados.contains(v.getEtiqueta())) {
-                v.ordenacionTopologicaDFS(visitados, pila);
+            if (!v.getVisitado()) {
+                v.ordenacionTopologicaDFS(pila);
             }
         }
         return pila;
@@ -544,8 +543,8 @@ public class TGrafoDirigido implements IGrafoDirigido {
         LinkedList<TVertice> lista = new LinkedList<>();
         Set<Comparable> visitados = new HashSet<>();
         for (TVertice v : vertices.values()) {
-            if (!visitados.contains(v.getEtiqueta())) {
-                v.ordenacionTopologicaDFS_Lista(visitados, lista);
+            if (!v.getVisitado()) {
+                v.ordenacionTopologicaDFS_Lista(lista);
             }
         }
         return lista;

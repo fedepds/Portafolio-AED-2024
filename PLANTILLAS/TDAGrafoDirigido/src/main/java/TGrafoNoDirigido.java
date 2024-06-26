@@ -21,6 +21,10 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
         boolean tempbool = false;
         TArista arInv = new TArista(arista.getEtiquetaDestino(), arista.getEtiquetaOrigen(), arista.getCosto());
         tempbool = (super.insertarArista(arista) && super.insertarArista(arInv));
+        if(lasAristas != null && tempbool){ //Se modifico para que cuando se inserte una arista en un grafo no dirigido, tambien se inserte en "lasAristas".
+            lasAristas.add(arista);
+            lasAristas.add(arInv);
+        }
         return tempbool;
     }
 
@@ -30,41 +34,47 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
 
     /**
      * Este método implementa el algoritmo de Prim para encontrar el árbol de expansión mínima de un grafo.
-     * El algoritmo de Prim es un algoritmo de árbol de expansión mínima que encuentra una arista de menor peso posible que conecta cualquier árbol en el bosque.
-     * Es un algoritmo codicioso en teoría de grafos ya que encuentra un árbol de expansión mínima para un grafo ponderado conectado agregando arcos de costo creciente en cada paso.
-     * El algoritmo comienza con un solo vértice y sigue agregando la arista mínima que conecta el árbol con un vértice que no está en el árbol.
-     * El método devuelve el árbol de expansión mínima como una nueva instancia de TGrafoNoDirigido.
+     * El algoritmo comienza seleccionando un vértice arbitrario y añadiéndolo al árbol de expansión mínima (MST).
+     * Luego, añade repetidamente la arista más pequeña que conecta un vértice en el MST con un vértice fuera del MST.
+     * El proceso continúa hasta que todos los vértices están incluidos en el MST.
      *
-     * @return TGrafoNoDirigido - El árbol de expansión mínima del grafo como una nueva instancia de TGrafoNoDirigido.
+     * @return Una nueva instancia de TGrafoNoDirigido que representa el árbol de expansión mínima del grafo original.
+     * Si el grafo no está conectado, el método devuelve null.
      */
     @Override
     public TGrafoNoDirigido Prim() {
-        // Crea una lista de vértices e inicialízala con los vértices del grafo.
-        LinkedList<Comparable> verticesArista = new LinkedList(getVertices().keySet());
+        // Comprueba si el grafo está conectado. Si no lo está, devuelve null.
+        if(!esConexo())
+            return null;
+
+        // Crea una lista de vértices del grafo.
+        LinkedList<Comparable> verticesAux = new LinkedList(getVertices().keySet());
 
         // Crea una lista para almacenar las aristas del árbol de expansión mínima.
         LinkedList<TArista> aristasAAM = new LinkedList<>();
 
-        // Crea una lista para almacenar los vértices del árbol de expansión mínima e inicialízala con el primer vértice del grafo.
+        // Crea una lista para almacenar los vértices del árbol de expansión mínima.
         LinkedList<Comparable> verticesAAM = new LinkedList<>();
-        verticesAAM.add(verticesArista.removeFirst());
 
-        // Mientras haya vértices que no estén en el árbol, sigue agregando la arista mínima que conecta el árbol con un vértice que no está en el árbol.
-        while (!verticesArista.isEmpty()){
-            // Encuentra la arista mínima que conecta el árbol con un vértice que no está en el árbol.
-            TArista aristaAux = lasAristas.buscarMin(verticesAAM, verticesArista);
+        // Añade el primer vértice al árbol de expansión mínima.
+        verticesAAM.add(verticesAux.removeFirst());
 
-            // Agrega la arista mínima a la lista de aristas del árbol de expansión mínima.
+        // Mientras todavía haya vértices fuera del árbol de expansión mínima...
+        while (!verticesAux.isEmpty()){
+            // Encuentra la arista más pequeña que conecta un vértice en el MST con un vértice fuera del MST.
+            TArista aristaAux = lasAristas.buscarMin(verticesAAM, verticesAux);
+
+            // Añade la arista a la lista de aristas en el MST.
             aristasAAM.add(aristaAux);
 
-            // Agrega el vértice conectado por la arista mínima a la lista de vértices del árbol de expansión mínima.
+            // Añade el vértice de destino de la arista a la lista de vértices en el MST.
             verticesAAM.add(aristaAux.getEtiquetaDestino());
 
-            // Elimina el vértice conectado por la arista mínima de la lista de vértices que no están en el árbol.
-            verticesArista.remove(aristaAux.getEtiquetaDestino());
+            // Elimina el vértice de destino de la lista de vértices fuera del MST.
+            verticesAux.remove(aristaAux.getEtiquetaDestino());
         }
 
-        // Devuelve el árbol de expansión mínima como una nueva instancia de TGrafoNoDirigido.
+        // Devuelve un nuevo grafo que representa el árbol de expansión mínima.
         return new TGrafoNoDirigido(new LinkedList(getVertices().values()), aristasAAM);
     }
 
@@ -176,10 +186,38 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
         return visitados;
     }
 
+
+    /**
+     * Este método verifica si el grafo está conectado.
+     * Comienza marcando todos los vértices como no visitados.
+     * Luego, realiza una búsqueda en profundidad (BPF) a partir del primer vértice.
+     * Si todos los vértices son visitados después de la BPF, significa que el grafo está conectado.
+     * Si hay algún vértice que no se visita después de la BPF, significa que el grafo no está conectado.
+     *
+     * @return verdadero si el grafo está conectado, falso en caso contrario.
+     */
     @Override
-    public boolean esConexo() {
-        return false;
+    public boolean esConexo(){
+        // Marca todos los vértices como no visitados
+        desvisitarVertices();
+
+        // Crea una lista de vértices del grafo
+        LinkedList<TVertice> verticesAux = new LinkedList<>(getVertices().values());
+
+        // Realiza una BPF a partir del primer vértice
+        verticesAux.getFirst().bpf(new LinkedList());
+
+        // Verifica si todos los vértices son visitados
+        for (TVertice v : verticesAux){
+            // Si hay algún vértice que no se visita, devuelve falso
+            if(!v.getVisitado())
+                return false;
+        }
+
+        // Si todos los vértices son visitados, devuelve verdadero
+        return true;
     }
+
 
     @Override
     public boolean conectados(TVertice origen, TVertice destino) {

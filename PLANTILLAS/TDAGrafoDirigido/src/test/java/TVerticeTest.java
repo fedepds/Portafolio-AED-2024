@@ -106,9 +106,9 @@ class TVerticeTest {
     @Test
     void ordenacionTopologicaDFS_withNoAdjacentVertices() {
         TVertice vertice = new TVertice("A");
-        Set<Comparable> visitados = new HashSet<>();
+
         Stack<TVertice> pila = new Stack<>();
-        vertice.ordenacionTopologicaDFS(visitados, pila);
+        vertice.ordenacionTopologicaDFS( pila);
         assertEquals(1, pila.size());
         assertTrue(pila.contains(vertice));
     }
@@ -118,9 +118,9 @@ class TVerticeTest {
         TVertice verticeA = new TVertice("A");
         TVertice verticeB = new TVertice("B");
         verticeA.insertarAdyacencia(1.0, verticeB);
-        Set<Comparable> visitados = new HashSet<>();
+
         Stack<TVertice> pila = new Stack<>();
-        verticeA.ordenacionTopologicaDFS(visitados, pila);
+        verticeA.ordenacionTopologicaDFS( pila);
         assertEquals(2, pila.size());
         assertTrue(pila.contains(verticeA));
         assertTrue(pila.contains(verticeB));
@@ -133,9 +133,9 @@ class TVerticeTest {
         TVertice verticeC = new TVertice("C");
         verticeA.insertarAdyacencia(1.0, verticeB);
         verticeB.insertarAdyacencia(1.0, verticeC);
-        Set<Comparable> visitados = new HashSet<>();
+
         Stack<TVertice> pila = new Stack<>();
-        verticeA.ordenacionTopologicaDFS(visitados, pila);
+        verticeA.ordenacionTopologicaDFS(pila);
         assertEquals(3, pila.size());
         assertTrue(pila.contains(verticeA));
         assertTrue(pila.contains(verticeB));
@@ -171,9 +171,8 @@ class TVerticeTest {
     @Test
     void ordenacionTopologicaDFS_Lista_withNoAdjacentVertices() {
         TVertice vertice = new TVertice("A");
-        Set<Comparable> visitados = new HashSet<>();
         LinkedList<TVertice> lista = new LinkedList<>();
-        vertice.ordenacionTopologicaDFS_Lista(visitados, lista);
+        vertice.ordenacionTopologicaDFS_Lista(lista);
         assertEquals(1, lista.size());
         assertTrue(lista.contains(vertice));
     }
@@ -183,9 +182,8 @@ class TVerticeTest {
         TVertice verticeA = new TVertice("A");
         TVertice verticeB = new TVertice("B");
         verticeA.insertarAdyacencia(1.0, verticeB);
-        Set<Comparable> visitados = new HashSet<>();
         LinkedList<TVertice> lista = new LinkedList<>();
-        verticeA.ordenacionTopologicaDFS_Lista(visitados, lista);
+        verticeA.ordenacionTopologicaDFS_Lista(lista);
         assertEquals(2, lista.size());
         assertTrue(lista.contains(verticeA));
         assertTrue(lista.contains(verticeB));
@@ -198,9 +196,8 @@ class TVerticeTest {
         TVertice verticeC = new TVertice("C");
         verticeA.insertarAdyacencia(1.0, verticeB);
         verticeB.insertarAdyacencia(1.0, verticeC);
-        Set<Comparable> visitados = new HashSet<>();
         LinkedList<TVertice> lista = new LinkedList<>();
-        verticeA.ordenacionTopologicaDFS_Lista(visitados, lista);
+        verticeA.ordenacionTopologicaDFS_Lista(lista);
         assertEquals(3, lista.size());
         assertTrue(lista.contains(verticeA));
         assertTrue(lista.contains(verticeB));
