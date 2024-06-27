@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TGrafoNoDirigidoTest {
 
     @Test
-    void Prim_withNoEdges() {
+    void Prim_sinAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -18,7 +18,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Prim_withOneEdge() {
+    void Prim_conUnaArista() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -31,7 +31,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Prim_withMultipleEdges() {
+    void Prim_conMultiplesAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -47,7 +47,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal_withNoEdges() {
+    void Kruskal_sinAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -57,7 +57,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal_withOneEdge() {
+    void Kruskal_conUnaArista() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -70,7 +70,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal_withMultipleEdges() {
+    void Kruskal_conMultiplesAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -87,7 +87,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal2_withNoEdges() {
+    void Kruskal2_sinAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -96,7 +96,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal2_withOneEdge() {
+    void Kruskal2_conUnaArista() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -109,7 +109,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void Kruskal2_withMultipleEdges() {
+    void Kruskal2_conMultiplesAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -125,7 +125,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void bea_withNoEdges() {
+    void bea_sinAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -135,7 +135,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void bea_withOneEdge() {
+    void bea_conUnaArista() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
@@ -147,7 +147,7 @@ class TGrafoNoDirigidoTest {
     }
 
     @Test
-    void bea_withMultipleEdges() {
+    void bea_conMultiplesAristas() {
         Collection<TVertice> vertices = new ArrayList<>();
         vertices.add(new TVertice("A"));
         vertices.add(new TVertice("B"));
