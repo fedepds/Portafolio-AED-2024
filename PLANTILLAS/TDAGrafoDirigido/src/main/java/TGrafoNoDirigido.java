@@ -280,5 +280,15 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
         // Devuelve el número de Bacon del actor dado
         return actorBuscado.getBacon();
     }
+    public LinkedList<TVertice> articulacion(Comparable origen) {
+        LinkedList<TVertice> puntosDeArticulacion = new LinkedList<TVertice>();
+        TVertice verticeOrigen = this.buscarVertice(origen);
+        if (verticeOrigen!=null) {
+            int[] contador = {0};
+            verticeOrigen.articulacion(puntosDeArticulacion,contador);
+        }
+        return puntosDeArticulacion;
+    }
+
 
 }

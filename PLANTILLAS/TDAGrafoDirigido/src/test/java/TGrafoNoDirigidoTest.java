@@ -40,6 +40,7 @@ class TGrafoNoDirigidoTest {
         aristas.add(new TArista("A", "B", 1.0));
         aristas.add(new TArista("B", "C", 2.0));
         aristas.add(new TArista("A", "C", 3.0));
+        aristas.add(new TArista("B", "A", 4.0));
         TGrafoNoDirigido grafo = new TGrafoNoDirigido(vertices, aristas);
         TGrafoNoDirigido result = grafo.Prim();
         assertEquals(3, result.getVertices().size());

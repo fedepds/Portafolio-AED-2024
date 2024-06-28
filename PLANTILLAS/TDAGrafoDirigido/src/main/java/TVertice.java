@@ -8,6 +8,8 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
     private boolean visitado;
     private T datos;
     private int numBacon=0;
+    private int num_bajo=0;
+    private int num_bp=0;
 
     public Comparable getEtiqueta() {
         return etiqueta;
@@ -372,6 +374,38 @@ public class TVertice<T> implements IVertice, IVerticeKevinBacon {
     }
     public Double costoAOtroVertice(LinkedList<Comparable> vertices, ArrayList<Double> D, Comparable etiquetaVertice){
         return D.get(vertices.indexOf(etiquetaVertice));
+    }
+    public void articulacion(LinkedList<TVertice> puntosDeArticulacion, int[] contador) {
+        this.setVisitado(true);
+        LinkedList<TVertice> hijos = new LinkedList<TVertice>();
+        this.num_bp = contador[0];
+        this.num_bajo = contador[0];
+        for(TAdyacencia ady : this.getAdyacentes()) {
+            TVertice verticeAdyacente = ady.getDestino();
+            if (!verticeAdyacente.visitado) {
+                contador[0]++;
+                verticeAdyacente.articulacion(puntosDeArticulacion, contador);
+                if (this.num_bajo > verticeAdyacente.num_bajo) {
+                    this.num_bajo = verticeAdyacente.num_bajo;
+                }
+                hijos.add(verticeAdyacente);
+            } else {
+                if (this.num_bajo > verticeAdyacente.num_bp) {
+                    this.num_bajo = verticeAdyacente.num_bp;
+                }
+            }
+        }
+        if (this.num_bp == 0 && hijos.size() > 1) {
+            puntosDeArticulacion.add(this);
+        } else {
+            if (contador[0]!=0) {
+                for(TVertice hijo : hijos) {
+                    if (hijo.num_bajo>=this.num_bp) {
+                        puntosDeArticulacion.add(this);
+                    }
+                }
+            }
+        }
     }
 
 }
