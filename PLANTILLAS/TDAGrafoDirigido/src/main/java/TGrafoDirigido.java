@@ -572,6 +572,21 @@ public class TGrafoDirigido implements IGrafoDirigido {
             System.out.println(vertice.getEtiqueta());
         }
     }
+    /**
+     * Este método verifica si dos vértices en el grafo están conectados.
+     * Primero, marca todos los vértices como no visitados.
+     * Luego, recupera los vértices correspondientes a las etiquetas de origen y destino proporcionadas.
+     * Si alguno de los vértices no existe, devuelve false.
+     * Luego, verifica si hay un camino desde el vértice de origen al vértice de destino.
+     * Después de eso, marca todos los vértices como no visitados nuevamente.
+     * Finalmente, verifica si hay un camino desde el vértice de destino al vértice de origen.
+     * Si ambas verificaciones son verdaderas, devuelve true, indicando que los vértices están conectados.
+     * De lo contrario, devuelve false.
+     *
+     * @param origen La etiqueta del vértice de origen.
+     * @param destino La etiqueta del vértice de destino.
+     * @return true si los vértices están conectados, false en caso contrario.
+     */
     public boolean estanConectados(Comparable origen, Comparable destino){
         desvisitarVertices();
         TVertice verticeOrigen = getVertices().get(origen);
@@ -583,6 +598,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
         desvisitarVertices();
         return result && verticeDestino.conectadoCon(verticeOrigen);
     }
+
 
 
 

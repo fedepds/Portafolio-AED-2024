@@ -280,6 +280,18 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
         // Devuelve el número de Bacon del actor dado
         return actorBuscado.getBacon();
     }
+    /**
+     * Este método encuentra los puntos de articulación en el grafo.
+     * Un punto de articulación es un vértice que, si se elimina junto con las aristas asociadas, hace que el grafo se desconecte.
+     * El método comienza creando una lista vacía de puntos de articulación.
+     * Luego, recupera el vértice correspondiente a la etiqueta dada.
+     * Si el vértice existe, llama al método de articulación en el vértice, pasando la lista de puntos de articulación y un contador inicializado a cero.
+     * El método de articulación del vértice actualiza la lista de puntos de articulación y el contador.
+     * Finalmente, el método devuelve la lista de puntos de articulación.
+     *
+     * @param origen La etiqueta del vértice desde donde comenzar a encontrar puntos de articulación.
+     * @return Una lista de vértices que son puntos de articulación en el grafo.
+     */
     public LinkedList<TVertice> articulacion(Comparable origen) {
         LinkedList<TVertice> puntosDeArticulacion = new LinkedList<TVertice>();
         TVertice verticeOrigen = this.buscarVertice(origen);
@@ -288,6 +300,26 @@ public  class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigid
             verticeOrigen.articulacion(puntosDeArticulacion,contador);
         }
         return puntosDeArticulacion;
+    }
+    public boolean esBiconexo() {
+        // Verifica si el grafo es conexo
+        if (!this.esConexo()) {
+            return false;
+        }
+
+        // Elije un vértice arbitrario del grafo
+        Comparable etiquetaVerticeArbitrario = this.getVertices().keySet().iterator().next();
+
+        // Encuentra los puntos de articulación en el grafo
+        LinkedList<TVertice> puntosDeArticulacion = this.articulacion(etiquetaVerticeArbitrario);
+
+        // Si hay algún punto de articulación, el grafo no es biconexo
+        if (!puntosDeArticulacion.isEmpty()) {
+            return false;
+        }
+
+        // Si el grafo es conexo y no tiene puntos de articulación, es biconexo
+        return true;
     }
 
 
