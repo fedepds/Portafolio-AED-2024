@@ -1,0 +1,60 @@
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 437.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 297.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 560.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 420.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 421.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 371.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_5 -> Vertice_4 - Costo: 241.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 424.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_4 - Costo: 294.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_5 -> Vertice_4 - Costo: 418.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 396.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 256.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 435.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 295.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 419.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 369.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_4 - Costo: 239.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 352.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_4 - Costo: 222.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_5 -> Vertice_4 - Costo: 346.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 324.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 184.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 363.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 223.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 347.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 297.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_4 - Costo: 167.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 389.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 249.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 373.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 323.0
+Origen: Vertice_3 -> Vertice_7 -> Vertice_2 -> Vertice_10 -> Vertice_5 -> Vertice_4 - Costo: 193.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 428.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_4 - Costo: 298.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_5 -> Vertice_4 - Costo: 422.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 400.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 260.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 439.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 299.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 423.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 373.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_7 -> Vertice_2 -> Vertice_5 -> Vertice_4 - Costo: 243.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 329.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 189.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 452.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 312.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 313.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 263.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_5 -> Vertice_4 - Costo: 133.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 316.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_5 -> Vertice_4 - Costo: 186.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_5 -> Vertice_4 - Costo: 310.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 288.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_9 -> Vertice_4 - Costo: 148.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_1 -> Vertice_4 - Costo: 327.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_9 -> Vertice_4 - Costo: 187.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_9 -> Vertice_4 - Costo: 311.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_1 -> Vertice_4 - Costo: 261.0
+Origen: Vertice_3 -> Vertice_10 -> Vertice_2 -> Vertice_5 -> Vertice_4 - Costo: 131.0
+

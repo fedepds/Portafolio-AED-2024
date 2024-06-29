@@ -1,0 +1,15 @@
+Vertice_2,Vertice_9,89
+Vertice_3,Vertice_7,49
+Vertice_5,Vertice_8,9
+Vertice_5,Vertice_9,47
+Vertice_1,Vertice_9,95
+Vertice_2,Vertice_5,81
+Vertice_5,Vertice_1,76
+Vertice_4,Vertice_1,59
+Vertice_3,Vertice_10,33
+Vertice_7,Vertice_10,92
+Vertice_5,Vertice_4,5
+Vertice_4,Vertice_9,14
+Vertice_2,Vertice_7,32
+Vertice_10,Vertice_5,95
+Vertice_10,Vertice_2,12

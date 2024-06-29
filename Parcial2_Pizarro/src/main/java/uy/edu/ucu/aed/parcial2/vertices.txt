@@ -1,0 +1,10 @@
+Vertice_1,1
+Vertice_2,1
+Vertice_3,2
+Vertice_4,2
+Vertice_5,1
+Vertice_6,1
+Vertice_7,1
+Vertice_8,2
+Vertice_9,1
+Vertice_10,1
