@@ -1,0 +1,24 @@
+Ejercicio 1:
+1-  En la clase GeneradorDatosGenericos, el método generarDatosAscendentes(int tamanio) se utiliza para generar un vector monótonamente ascendente.
+    Este método toma un parámetro tamanio que determina el tamaño del vector a generar.
+
+2- En la clase GeneradorDatosGenericos, el método generarDatosDescendentes(int tamanio) se utiliza para generar un vector monótonamente descendente.
+   Este método toma un parámetro tamanio que determina el tamaño del vector a generar.
+
+3- En la clase GeneradorDatosGenericos, el método generarDatosAleatorios(int tamanio) se utiliza para generar un vector con valores aleatorios. Este método toma un parámetro tamanio que determina el tamaño del vector a generar.
+    Crea un nuevo vector datosGenerados del tamaño especificado y un vector datosUtilizados del mismo tamaño para verificar si un valor ya ha sido utilizado.
+    Luego, en un bucle for que recorre desde 0 hasta tamanio, genera un número aleatorio j que será el índice en el vector.
+    Si el valor en el índice j del vector datosUtilizados ya es verdadero (lo que significa que ya se ha asignado un valor a esa posición en datosGenerados), entonces se recorre el vector datosUtilizados hasta encontrar un índice que no se haya utilizado.
+    Asigna el valor del índice actual i a la posición j en el vector datosGenerados y marca el índice j en datosUtilizados como verdadero.
+
+4- El vector de datos generado contiene tantos elementos como el valor del parámetro tamanio que se pasa a los métodos generarDatosAleatorios(int tamanio), generarDatosAscendentes(int tamanio) y generarDatosDescendentes(int tamanio).
+Si deseas hacer que la cantidad de elementos del vector sea parametrizable, ya está implementado en la clase
+
+5- Para verificar si un conjunto está ordenado, podemos recorrer el conjunto desde el primer elemento hasta el penúltimo, comparando cada elemento con el siguiente.
+Si encontramos un par de elementos donde el primero es mayor que el segundo, entonces el conjunto no está ordenado.
+Si llegamos al final del conjunto sin encontrar tal par, entonces el conjunto está ordenado.
+El método estaOrdenado(int[] datosAVerificar, boolean orden) en la clase TClasificador ya realiza esta verificación.
+El parámetro orden determina si se verifica el orden ascendente (orden = true) o descendente (orden = false).
+El tiempo de ejecución de este algoritmo es O(n), donde n es el número de elementos en el conjunto. Esto se debe a que cada elemento del conjunto se compara una vez con el siguiente, por lo que el número total de operaciones es proporcional al tamaño del conjunto.
+
+Ejercicio 2:
