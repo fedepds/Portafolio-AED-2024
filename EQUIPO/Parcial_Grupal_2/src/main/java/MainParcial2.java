@@ -1,7 +1,3 @@
-package uy.edu.ucu.aed.parcial2;
-
-import uy.edu.ucu.aed.*;
-
 /**
  * Algoritmo y Estrucutras de Datos
  * Parcial 2 - Parte 3
@@ -18,6 +14,9 @@ public class MainParcial2
         TCaminos<TNodoDeLaRed> caminos = grafo.caminosDesdeHasta("Vertice_3", "Vertice_4");
         
         // Escribir archivo de salida con el resultado de la llamada anterior, con los caminos ordenados de menor a mayor costo, uno por línea.
+        grafo.caminosDesdeHasta("Vertice_3","Vertice_4");
+
+
         TClasificador clasificador = new TClasificador();
 
 
